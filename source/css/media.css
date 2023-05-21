@@ -1,0 +1,63 @@
+@media only screen and (max-width: 1920px) {
+  /* BASE STYLE SETTINGS START (1920px): */
+  body {
+    font-size: 16px;
+    line-height: 30px;
+  }
+  h2 {
+    font: 58px/70px var(--font-family-titles);
+  }
+  h3 {
+    font: 46px/58px var(--font-family-titles);
+  }
+  /* BASE STYLE SETTINGS END (1920px). */
+  /* WRAPPER STYLE SETTINGS START (1920px): */
+  .wrapper-fix {
+    padding: 0px 50px;
+  }
+  .header-menu-full.sticky .header-menu-fix {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+  /* WRAPPER STYLE SETTINGS END (1920px). */
+}
+@media only screen and (max-width: 1440px) {
+  /* BASE STYLE SETTINGS START (1440px): */
+  body {
+    font-size: 14px;
+    line-height: 28px;
+  }
+  h2 {
+    font: 52px/64px var(--font-family-titles);
+  }
+  h3 {
+    font: 44px/56px var(--font-family-titles);
+  }
+  /* BASE STYLE SETTINGS END (1440px). */
+  /* WRAPPER STYLE SETTINGS START (1440px): */
+  .wrapper-fix {
+    padding: 0px 38px;
+  }
+  .header-menu-full.sticky .header-menu-fix {
+    padding-left: 38px;
+    padding-right: 38px;
+  }
+  /* WRAPPER STYLE SETTINGS END (1440px). */
+}
+@media only screen and (max-width: 1180px) {
+  /* BASE STYLE SETTINGS START (1180px): */
+  body {
+    font-size: 13px;
+    line-height: 26px;
+  }
+  /* BASE STYLE SETTINGS END (1180px). */
+  /* WRAPPER STYLE SETTINGS START (1180px): */
+  .wrapper-fix {
+    padding: 0px 25px;
+  }
+  .header-menu-full.sticky .header-menu-fix {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+  /* WRAPPER STYLE SETTINGS END (1180px). */
+}

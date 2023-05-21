@@ -1,0 +1,31 @@
+:root {
+  --font-family-01: "Tenor Sans";
+  --font-family-02: "TT Firs Neue Regular";
+  --font-family-03: "TT Firs Neue Medium";
+  --font-family-titles: var(--font-family-01);
+  --font-family-primary: var(--font-family-02);
+  --color-white: #FFFFFF;
+  --color-dark: #000000;
+  --color-dark-200: #242222;
+  --color-dark-100: #2E2C2C;
+  --color-gold-300: #996F50;
+  --color-gold-200: #BD8D6A;
+  --color-gold-150: #CC9D7A;
+  --color-gold-020: #C7B5A9;
+  --color-gold-005: #E3DACF;
+  --color-gold-border: rgba(214, 186, 164, 0.2);
+  --color-green-300: #1E2E2E;
+  --color-green-200: #26393B;
+  --color-green-005: #CDC9BF;
+  --color-green-border: rgba(205, 205, 183, 0.2);
+  --color-brown-300: #522010;
+  --color-brown-200: #784839;
+  --color-brown-100: #B56041;
+  --color-brown-020: #D8D1C9;
+  --color-brown-005: #E0DCD5;
+  --color-brown-border: rgba(120, 72, 57, 0.2);
+  --color-map-road-01: #C79C8F;
+  --color-map-road-02: #DEC2B5;
+  --color-map-water: #A7C3CC;
+  --color-map-mountains: #C8CFC5;
+}

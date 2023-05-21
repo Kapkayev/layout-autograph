@@ -1,0 +1,1330 @@
+@import "./variables.sass"
+@import "./fonts.sass"
+
+/* BASE STYLE SETTINGS START: */
+
+*
+	padding: 0px
+	margin: 0px
+	box-sizing: border-box
+
+html
+	overflow: hidden
+	overflow-x: hidden
+
+body
+	// height: 9000px
+	scroll-behavior: smooth
+	overflow-x: hidden
+	font-family: var(--font-family-primary)
+
+h1, h2, h3, h4, h5, h6
+	font-family: var(--font-family-titles)
+		
+@mixin element_animation
+	transition-timing-function: ease-in-out
+	transition-duration: 0.2s
+
+::-webkit-scrollbar
+	width: 3px
+	border-radius: 5px
+
+
+::-webkit-scrollbar-track-piece
+	background-color: var(--color-dark-100)
+
+
+::-webkit-scrollbar-thumb
+	background: var(--color-gold-020)
+
+
+::-webkit-scrollbar-corner
+	background-color: var(--color-gold-020)
+
+/* BASE STYLE SETTINGS END. */
+
+
+/* WRAPPER STYLE SETTINGS START: */
+
+.wrapper-full
+	width: 100%
+	height: auto
+	margin: 0px auto
+	padding: 0px 0px
+
+.wrapper-fix
+	width: 100%
+	max-width: 1920px
+	height: auto
+	margin: 0px auto
+
+/* WRAPPER STYLE SETTINGS END. */
+
+
+/* HEADER STYLE SETTINGS START: */
+
+.section-header
+	background-image: url('../media/bg_header.jpg')
+	background-repeat: no-repeat
+	background-position: center
+	background-size: cover
+
+.header-container
+	height: 810px
+	display: flex
+	flex-direction: column
+	position: relative
+
+.header-menu-full.sticky
+	width: 100%
+	position: fixed
+	top: 0px
+	left: 50%
+	z-index: 100
+	transform: translate(-50%, 0%)
+	@include element_animation
+	background-color: var(--color-dark-100)
+
+	.header-menu-fix
+		max-width: 1920px
+		margin: 0px auto
+		border-bottom: 1px solid var(--color-gold-border)
+
+.header-menu-full.sticky
+	.header-menu__logotype
+		.logotype_middle
+			display: none
+		.logotype_mini
+			display: block
+
+.header-menu-fix
+	width: 100%
+	display: flex
+	justify-content: space-between
+	align-items: center
+	padding-top: 16px
+	padding-bottom: 16px
+
+	& > div 
+		display: flex
+		justify-content: space-between
+		align-items: center
+
+		&:nth-child(1)
+			width: calc((100% - 65px)/2)
+			justify-content: flex-start
+
+		&:nth-child(3)
+			width: calc((100% - 65px)/2)
+			justify-content: flex-end
+
+	.header-menu__button-burger
+		width: 50px
+		height: 40px
+		display: flex
+		justify-content: center
+		align-items: center
+		border: 1px solid var(--color-gold-200)
+		border-radius: 20px
+		cursor: pointer
+		@include element_animation
+
+		&:hover
+			background-color: var(--color-gold-200)
+
+		&:active
+			background-color: var(--color-gold-300)
+			border-color: var(--color-gold-300)
+
+	.header-menu__navigation
+		ul
+			display: flex
+			column-gap: 32px
+			list-style-type: none
+			margin: 0px 0px 0px 32px
+
+			li a
+				color: var(--color-gold-005)
+				font-size: 12px
+				line-height: 16px
+				text-transform: uppercase
+				text-decoration: none
+				@include element_animation
+
+				&:hover
+					opacity: 0.6
+
+	.header-menu__logotype
+		.logotype_middle
+			display: block
+		.logotype_mini
+			display: none
+
+	.header-menu__phone
+		p a 
+			color: var(--color-gold-005)
+			font-size: 14px
+			line-height: 18px
+			text-decoration: none
+
+	.header-menu__button-apartment
+		margin: 0px 16px 0px 32px
+
+		a.button
+			background-color: var(--color-gold-200)
+			color: var(--color-gold-005)
+			font-size: 12px
+			line-height: 16px
+			text-transform: uppercase
+			text-decoration: none
+			letter-spacing: 0.036em
+			border-radius: 20px
+			padding: 12px 20px
+
+			@include element_animation
+
+			&:hover
+				background-color: var(--color-gold-300)
+
+	.header-menu__button-call
+		a.button
+			width: 40px
+			height: 40px
+			display: flex
+			justify-content: center
+			align-items: center
+			border: 1px solid var(--color-gold-200)
+			border-radius: 50%
+			cursor: pointer
+
+			@include element_animation
+
+			&:hover
+				background-color: var(--color-gold-200)
+
+			&:active
+				background-color: var(--color-gold-300)
+				border-color: var(--color-gold-300)
+
+.header-title
+	width: 100%
+	display: flex
+	flex-direction: column
+	align-items: center
+	align-content: flex-end
+	position: absolute
+	bottom: 50px
+
+	.header-title__title
+		max-width: 58%
+		img
+			width: 100%
+
+	.header-title__caption
+		font-family: var(--font-family-titles)
+		font-size: 26px
+		line-height: 30px
+		color: var(--color-gold-200)
+
+.header-addres
+	display: flex
+	align-items: center
+	position: absolute
+	right: -100px
+	bottom: 140px
+	transform: rotate(-90deg)
+
+	span
+		color: var(--color-gold-005)
+		font-size: 12px
+		line-height: 16px
+		text-transform: uppercase
+
+	svg
+		transform: rotate(90deg)
+		margin: 0px 0px 0px 22px
+
+/* HEADER STYLE SETTINGS END. */
+
+
+/* SECTION MENU STYLE SETTINGS START: */
+
+.section-menu
+	width: 100%
+	height: 100vh
+	position: fixed
+	left: 0px
+	top: 0px
+	z-index: 200
+	transform: translate(-100%)
+	background-color: var(--color-dark-100)
+	transition-timing-function: ease-in-out
+	transition-duration: 0.9s
+
+	.wrapper-fix
+		height: 100%
+
+.menu-container
+	width: 100%
+	height: 100%
+
+.menu__menu
+	width: 100%
+	display: flex
+	justify-content: space-between
+	align-items: center
+	padding-top: 16px
+	padding-bottom: 16px
+	border-bottom: 1px solid var(--color-gold-border)
+
+	& > div 
+		display: flex
+		justify-content: space-between
+		align-items: center
+
+		&:nth-child(1)
+			width: calc((100% - 65px)/2)
+			justify-content: flex-start
+
+		&:nth-child(3)
+			width: calc((100% - 65px)/2)
+			justify-content: flex-end
+
+	.menu__button-burger
+		width: 50px
+		height: 40px
+		display: flex
+		justify-content: center
+		align-items: center
+		border: 1px solid var(--color-gold-200)
+		border-radius: 20px
+		cursor: pointer
+		@include element_animation
+
+		&:hover
+			background-color: var(--color-gold-200)
+
+		&:active
+			background-color: var(--color-gold-300)
+			border-color: var(--color-gold-300)
+
+	.menu__logotype
+		.logotype_middle
+			display: block
+		.logotype_mini
+			display: none
+
+	.menu__phone
+		p a 
+			color: var(--color-gold-005)
+			font-size: 14px
+			line-height: 18px
+			text-decoration: none
+
+	.menu__button-apartment
+		margin: 0px 16px 0px 32px
+
+		a.button
+			background-color: var(--color-gold-200)
+			color: var(--color-gold-005)
+			font-size: 12px
+			line-height: 16px
+			text-transform: uppercase
+			text-decoration: none
+			letter-spacing: 0.036em
+			border-radius: 20px
+			padding: 12px 20px
+
+			@include element_animation
+
+			&:hover
+				background-color: var(--color-gold-300)
+
+	.menu__button-call
+		a.button
+			width: auto
+			height: 40px
+			display: flex
+			column-gap: 12px
+			align-items: center
+			text-decoration: none
+			border: 1px solid var(--color-gold-200)
+			border-radius: 20px
+			padding: 10px 16px
+			cursor: pointer
+
+			@include element_animation
+
+			&:hover
+				background-color: var(--color-gold-200)
+
+			&:active
+				background-color: var(--color-gold-300)
+				border-color: var(--color-gold-300)
+
+		p
+			color: var(--color-gold-005)
+			font-size: 12px
+			line-height: 16px
+			text-transform: uppercase
+			text-decoration: none
+			letter-spacing: 0.036em
+
+.menu__content
+	width: 100%
+	height: calc(100% - 125px)
+	display: flex
+	column-gap: 24px
+	padding: 32px 0px 50px 0px
+
+	.menu__content-column-01
+		width: 37.5%
+		height: 100%
+		display: flex
+		flex-direction: column
+		align-items: flex-start
+		justify-content: space-between
+
+	.menu__content-column-02
+		width: 62.5%
+		height: 100%
+		display: flex
+
+		.menu__content-column-03
+			width: 60%
+			height: 100%
+			overflow: hidden
+			position: relative
+
+			img
+				width: 100%
+				height: 100%
+				position: absolute
+				left: 50%
+				top: 50%
+				transform: translate(-50%, -50%)
+				object-fit: cover
+
+		.menu__content-column-04
+			width: 40%
+			height: 100%
+			display: flex
+			flex-direction: column
+			border-left: 1px solid var(--color-gold-border)
+			padding: 0px 0px 0px 24px
+			margin: 0px 0px 0px 24px
+
+
+			.menu__content-row-01
+				width: 100%
+				height: calc(50% - 0.5px)
+				border-bottom: 1px solid var(--color-gold-border)
+				padding: 0px 0px 24px 0px
+				margin: 0px 0px 24px 0px
+
+				& > div
+					width: 100%
+					height: 100%
+
+					a
+						display: block
+						width: 100%
+						height: 100%
+						display: flex
+						flex-direction: column
+						justify-content: space-between
+						align-items: flex-end
+						text-decoration: none
+						background-color: var(--color-brown-200)
+						@include element_animation
+						padding: 32px 32px
+
+						.meni__content-icon
+							width: 60px
+							height: 60px
+							background-color: var(--color-gold-border)
+							border-radius: 50%
+							display: flex
+							justify-content: center
+							align-items: center
+
+						p
+							color: var(--color-gold-005)
+							font-size: 14px
+							line-height: 22px
+							text-align: right
+
+
+			.menu__content-row-02
+				width: 100%
+				height: calc(50% - 0.5px)
+
+				& > div
+					width: 100%
+					height: 100%
+
+					a
+						display: block
+						width: 100%
+						height: 100%
+						display: flex
+						flex-direction: column
+						justify-content: space-between
+						align-items: flex-end
+						text-decoration: none
+						background-color: var(--color-gold-300)
+						@include element_animation
+						padding: 32px 32px
+
+						.meni__content-icon
+							width: 60px
+							height: 60px
+							background-color: var(--color-gold-border)
+							border-radius: 50%
+							display: flex
+							justify-content: center
+							align-items: center
+
+					p
+						color: var(--color-gold-005)
+						font-size: 14px
+						line-height: 22px
+						text-align: right
+
+
+.menu__content-navigation
+	width: 100%
+
+	ul
+		width: 100%
+		list-style-type: none
+
+		li 
+			padding: 16px 0px
+			border-bottom: 1px solid var(--color-gold-border)
+
+			&:last-child
+				border-bottom: none
+
+			a
+				font-family: var(--font-family-titles)
+				color: var(--color-gold-020)
+				font-size: 32px
+				line-height: 40px
+				text-transform: uppercase
+				text-decoration: none
+				@include element_animation
+
+				&:hover
+					opacity: 0.6
+
+.menu__content-links
+	width: 100%
+	margin: 24px 0px
+
+	ul
+		list-style-type: none
+		display: flex
+		column-gap: 32px
+
+		li
+			a
+				color: var(--color-gold-020)
+				font-size: 14px
+				line-height: 28px
+				text-decoration: none
+				@include element_animation
+
+				&:hover
+					opacity: 0.6
+
+.menu__content-copyright
+	color: var(--color-gold-020)
+	font-size: 10px
+	line-height: 12px
+	text-transform: uppercase
+	text-decoration: none
+	opacity: 0.5
+
+
+/* SECTION MENU STYLE SETTINGS END. */
+
+
+
+/* PRELOADER STYLE SETTINGS START: */
+
+.section-preloader
+	width: 100%
+	height: 100vh
+	position: fixed
+	left: 0px
+	top: 0px
+	z-index: 300
+	background-color: var(--color-dark-200)
+	transition-duration: 0.8s
+	transition-timing-function: ease-in-out
+
+	.wrapper-fix
+		height: 100%
+
+.preloader-background
+	width: 100%
+	height: 100vh
+	position: fixed
+	left: 0px
+	top: 0px
+	z-index: 400
+	background-color: var(--color-dark-100)
+	transform: translateY(100%)
+	filter: blur(5px)
+	transition-duration: 0.8s
+	transition-timing-function: ease-in-out
+
+.preloader-container
+	width: 100%
+	height: 100%
+	display: flex
+	flex-direction: column
+	justify-content: flex-end
+	padding: 48px 0px
+
+.preloader-block
+	width: 100%
+	height: auto
+	display: flex
+	justify-content: space-between
+	align-items: center
+
+	.preloader-item
+		display: flex
+		column-gap: 16px
+		align-items: center
+
+		p
+			color: var(--color-gold-020)
+			font-size: 10px
+			line-height: 12px
+			text-decoration: none
+			text-transform: uppercase
+			opacity: 0.5
+
+.loader-spinner
+	width: 24px
+	height: 24px
+	border-radius: 50%
+	border: 2px solid var(--color-gold-020)
+	border-color: var(--color-gold-border)
+	border-right-color: #BD8D6A
+	animation: s2 1s infinite linear
+
+@keyframes s2
+	to
+		transform: rotate(1turn)
+
+/* PRELOADER STYLE SETTINGS END. */
+
+
+/* TITLE LABEL STYLE SETTINGS START: */
+
+
+.block-label
+	width: 100%
+	overflow: hidden
+
+
+.title-label
+	display: flex
+	align-items: center
+	position: relative
+	left: -40px
+
+	.label-number
+		width: 80px
+		height: 80px
+		display: flex
+		justify-content: center
+		align-items: center
+		border-radius: 50%
+
+		font-family: var(--font-family-primary)
+		font-size: 28px
+		line-height: 32px
+		letter-spacing: -0.01em
+		text-transform: uppercase
+
+		padding: 0px 0px 0px 5px
+
+	.label-text
+		font-size: 12px
+		line-height: 32px
+		letter-spacing: 0.02em
+		text-transform: uppercase
+		position: relative
+		left: -18px
+
+	&.color_gold
+		.label-number
+			color: var(--color-gold-150)
+			border: 1px solid var(--color-gold-150)
+		.label-text
+			color: var(--color-gold-150)
+			background-color: var(--color-dark-100)
+
+	&.color_brown
+		.label-number
+			color: var(--color-brown-100)
+			border: 1px solid var(--color-brown-100)
+		.label-text
+			color: var(--color-brown-100)
+			background-color: var(--color-brown-005)
+
+/* TITLE LABEL STYLE SETTINGS END. */
+
+
+/* PROJECT STYLE SETTINGS START: */
+
+.section-project
+	background-color: var(--color-dark-100)
+
+.project-container
+	padding: 80px 0px
+
+.project-block-title
+	margin: 32px 0px 80px 0px
+	h2
+		color: var(--color-gold-020)
+		text-transform: uppercase
+		span
+			color: var(--color-gold-150)
+
+.project-block-content
+	width: 100%
+	display: flex
+	column-gap: 64px
+
+	.project-block-column-01
+		width: 68%
+
+	.project-block-column-02
+		width: 32%
+		p
+			width: 75%
+			color: var(--color-gold-020)
+
+.project-block-info
+	margin: 40px 0px 40px 0px
+
+	.project-block-info-item
+		border-top: 1px solid var(--color-gold-border)
+		padding: 40px 0px
+
+		&:last-child
+			border-bottom: 1px solid var(--color-gold-border)
+
+		p
+			&:first-child
+				font-family: var(--font-family-titles)
+				color: var(--color-gold-150)
+				font-size: 40px
+				line-height: 48px
+				margin: 0px 0px 8px 0px
+
+			&:last-child
+				color: var(--color-gold-020)
+				font-size: 11px
+				line-height: 16px
+				text-transform: uppercase
+
+
+.gallery-slider
+	width: 110%
+	height: auto
+	position: relative
+	left: -10%
+
+	.gallery-item
+		width: 100%
+		height: 620px
+		overflow: hidden
+		position: relative
+
+		img
+			width: 100%
+			height: 100%
+			position: absolute
+			left: 50%
+			top: 50%
+			transform: translate(-50%, -50%)
+			object-fit: cover
+
+.gallery-controls
+	display: flex
+	align-items: center
+	column-gap: 20px
+	margin: 20px 0px 0px 0px
+
+.gallery-counter-block
+	color: var(--color-gold-020)
+	font-size: 14px
+	line-height: 28px
+	text-transform: uppercase
+
+.gallery-progress
+	display: flex
+	align-items: center
+	flex-grow: 1
+
+	.owl-dot
+		height: 1px
+		flex-grow: 1
+		background-color: var(--color-gold-border)
+		outline: none
+		border: none
+		@include element_animation
+
+		&:first-child
+			border-radius: 3px
+		&:last-child
+			border-radius: 3px
+
+		&.active
+			height: 2px
+			background-color: var(--color-gold-150)
+			border-radius: 3px
+
+.gallery-navigation
+	display: flex
+	column-gap: 8px
+
+	.gallery-navigation-item
+		width: 56px
+		height: 56px
+		border-radius: 50%
+		display: flex
+		justify-content: center
+		align-items: center
+		cursor: pointer
+		@include element_animation
+
+		&:first-child
+			border: 1px solid var(--color-gold-150)
+			&:hover
+				background-color: var(--color-gold-150)
+				path
+					stroke: var(--color-dark-100)
+
+
+		&:last-child
+			background-color: var(--color-gold-150)
+			&:hover
+				background-color: var(--color-gold-200)
+				path
+					stroke: var(--color-dark-100)
+
+
+
+/* PROJECT STYLE SETTINGS END. */
+
+
+/* PROJECT STYLE SETTINGS START: */
+
+.section-map
+	background-color: var(--color-brown-005)
+	position: relative
+
+	.map-container
+		padding: 80px 0px 80px 0px
+
+		.title-label
+			.label-number
+				padding: 0px 0px 0px 15px
+
+		.map-block
+			width: 100%
+			display: flex
+			column-gap: 80px
+
+			.map-column-01
+				width: 50%
+
+			.map-column-02
+				width: 50%
+
+.map-block-title
+	margin: 32px 0px 48px 0px
+	h2
+		color: var(--color-brown-100)
+		text-transform: uppercase
+		span
+			color: var(--color-brown-200)
+			padding: 0px 24px
+
+.map-row-01
+	display: flex
+	column-gap: 64px
+	padding: 0px 0px 48px 0px
+	border-bottom: 1px solid var(--color-brown-border)
+
+	.map-column-03
+		width: 55%
+
+		p
+			width: 85%
+			height: 100%
+			color: var(--color-brown-200)
+			font-size: 14px
+			line-height: 28px
+			margin: 0px 0px 8px 0px
+		
+	.map-column-04
+		width: 45%
+
+		p
+			width: 90%
+			height: 100%
+			color: var(--color-brown-200)
+			font-size: 14px
+			line-height: 28px
+			margin: 0px 0px 8px 0px
+			border-left: 1px solid var(--color-brown-border)
+			padding: 0px 0px 0px 48px
+
+.map-row-02
+	width: 100%
+	display: flex
+	justify-content: space-between
+	align-items: center
+	margin: 40px 0px 0px 0px
+
+	p
+		color: var(--color-brown-200)
+		font-size: 24px
+		line-height: 32px
+
+	.button-map
+		a.button
+			background-color: var(--color-brown-200)
+			color: var(--color-brown-005)
+			font-size: 14px
+			line-height: 20px
+			text-decoration: none
+			letter-spacing: 0.01em
+			border-radius: 28px
+			padding: 17px 24px
+
+			@include element_animation
+
+			&:hover
+				background-color: var(--color-brown-300)
+
+.map-row-03
+	width: 100%
+	position: absolute
+	left: 0px
+	top: 100%
+	z-index: 1
+	margin: 0px auto
+	transition-duration: 1s
+	transition-timing-function: ease-in-out
+
+	&.map-block-parallax
+		transform: translateY(-100%)
+
+	.map-wrapper
+		width: 100%
+		max-width: 1920px
+		height: auto
+		margin: 0px auto
+
+		& > div:first-child
+			width: 50%
+			background-color: var(--color-brown-200)
+			padding: 48px 32px
+
+		& > div:last-child
+			width: 50%
+
+	.map-wrapper
+		& > div > p
+			font-family: var(--font-family-titles)
+			color: var(--color-brown-020)
+			font-size: 14px
+			line-height: 28px
+			text-transform: uppercase
+			padding: 0px 0px 24px 0px
+			border-bottom: 1px solid var(--color-gold-border)
+
+
+.map-slider-container
+	width: 100%
+	display: flex
+	justify-content: space-between
+	align-items: flex-start
+	padding: 32px 0px 24px 0px
+	border-bottom: 1px solid var(--color-gold-border)
+	margin: 0px 0px 120px 0px
+
+	.map-slider
+		width: 400px
+
+		.map-slider-item
+			p
+				&:first-child
+					font-family: var(--font-family-titles)
+					color: var(--color-brown-020)
+					font-size: 104px
+					line-height: 120px
+					text-transform: uppercase
+					margin: 0px 0px 12px 0px
+
+				&:last-child
+					color: var(--color-brown-020)
+					font-size: 14px
+					line-height: 22px
+					text-transform: uppercase
+
+
+	.map-slider-navigation
+		display: flex
+		column-gap: 8px
+
+		.map-slider-navigation-item
+			width: 56px
+			height: 56px
+			border-radius: 50%
+			display: flex
+			justify-content: center
+			align-items: center
+			cursor: pointer
+			@include element_animation
+
+			&:first-child
+				border: 1px solid var(--color-gold-150)
+				&:hover
+					background-color: var(--color-gold-150)
+					path
+						stroke: var(--color-dark-100)
+
+
+			&:last-child
+				background-color: var(--color-gold-150)
+				&:hover
+					background-color: var(--color-gold-200)
+					path
+						stroke: var(--color-dark-100)
+
+/* PROJECT STYLE SETTINGS END. */
+
+
+/* CALL MODAL STYLE SETTINGS START: */
+
+.section-call
+	width: 100%
+	height: 100vh
+	position: fixed
+	top: 0px
+	left: 0px
+	display: none
+	z-index: 500
+
+	.wrapper-fix
+		height: 100%
+
+.call-container
+	width: 100%
+	height: 100%
+	display: flex
+
+	.call-column-01
+		width: 37.5%
+		position: relative
+
+	.call-column-02
+		width: 62.5%
+		position: relative
+
+.call-block
+	width: 100%
+	height: 100vh
+	position: relative
+	opacity: 0
+	padding: 80px 80px 0px 0px
+	overflow: auto
+
+	transition-duration: 1s
+	transition-property: transform
+	transition-timing-function: ease-in-out
+	transform: translateX(-100%)
+
+	&.active
+		z-index: 600
+		opacity: 1
+		transform: translateX(0%)
+		background-color: var(--color-dark-100)
+
+	.call-block-head
+		margin: 0px 0px 32px 0px
+
+		p
+			&:first-child
+				font-family: var(--font-family-titles)
+				color: var(--color-brown-020)
+				font-size: 44px
+				line-height: 60px
+				text-transform: uppercase
+				margin: 0px 0px 30px 0px
+
+			&:last-child
+				color: var(--color-brown-020)
+				font-size: 14px
+				line-height: 22px
+
+	.call-block-body
+		.call-form
+			display: flex
+			flex-direction: column
+
+		input
+			width: 100%
+			background-color: transparent
+			border: 1px solid var(--color-gold-border)
+			border-radius: 32px
+			color: var(--color-brown-020)
+			font-size: 14px
+			line-height: 20px
+			padding: 16px 20px
+			margin: 0px 0px 20px 0px
+			outline: none
+
+			&::placeholder
+				font-family: var(--font-family-primary)
+				color: var(--color-brown-020)
+				font-size: 14px
+				line-height: 20px
+
+		button
+			width: 100%
+			background-color: var(--color-gold-200)
+			font-family: var(--font-family-primary)
+			color: var(--color-gold-005)
+			font-size: 14px
+			line-height: 20px
+			border-radius: 32px
+			padding: 16px 16px
+			outline: none
+			border: none
+			margin: 0px 0px 20px 0px
+			cursor: pointer
+			@include element_animation
+
+			&:hover
+				background-color: var(--color-gold-300)
+				color: var(--color-gold-005)
+
+		p
+			color: rgba(216, 209, 201, 0.5)
+			font-size: 11px
+			line-height: 16px
+			text-transform: uppercase
+			text-align: center
+
+			a
+				color: var(--color-gold-020)
+				opacity: 1
+				text-decoration: none
+
+	&.call-block-02
+		display: flex
+		justify-content: center
+		align-items: center
+		position: relative
+
+		.call-block-head
+			text-align: center
+			p
+				&:first-child
+					color: var(--color-gold-150)
+					font-size: 44px
+					line-height: 60px
+
+				&:last-child
+					color: var(--color-brown-020)
+					font-size: 14px
+					line-height: 22px
+
+.call-background-01
+	width: 37.5%
+	height: 100vh
+	position: fixed
+	left: 0px
+	z-index: 560
+	background-color: var(--color-dark-100)
+
+	transition-duration: 1s
+	transition-property: transform
+	transition-timing-function: ease-in-out
+	transform: translateX(-100%)
+
+	&.active
+		transform: translateX(0%)
+
+.call-background-02
+	width: 100%
+	height: 100vh
+	position: fixed
+	left: 0px
+	z-index: 550
+	background-color: var(--color-dark-100)
+	opacity: 0
+
+	transition-duration: 1s
+	transition-property: opacity
+	transition-timing-function: ease-in-out
+
+	&.active
+		opacity: 0.5
+
+.call-close
+	width: 56px
+	height: 56px
+	display: flex
+	justify-content: center
+	align-items: center
+	background-color: var(--color-brown-200)
+	cursor: pointer
+
+	position: absolute
+	right: -26px
+	top: 50%
+	z-index: 700
+	transform: translateY(-50%)
+	border-radius: 50%
+
+	@include element_animation
+	opacity: 0
+
+	&:hover
+		background-color: var(--color-brown-100)
+
+	&.active
+		opacity: 1
+
+/* CALL MODAL STYLE SETTINGS END. */
+
+
+/* FORM SECTION STYLE SETTINGS START: */
+
+.section-form
+	background-color: var(--color-gold-300)
+
+.form-container
+	width: 100%
+	display: flex
+	position: relative
+
+	.form-column-01
+		width: 50%
+		display: flex
+		justify-content: center
+		align-items: center
+		min-height: 700px
+		padding: 80px 0px
+
+	.form-column-02
+		width: 50%
+
+.form-block-head
+	margin: 0px 0px 32px 0px
+
+	p
+		&:first-child
+			font-family: var(--font-family-titles)
+			color: var(--color-brown-020)
+			font-size: 44px
+			line-height: 60px
+			text-transform: uppercase
+			text-align: center
+			margin: 0px 0px 30px 0px
+
+		&:last-child
+			color: var(--color-brown-020)
+			font-size: 14px
+			line-height: 22px
+			text-align: center
+
+.form-block-body
+		.form-form
+			display: flex
+			flex-direction: column
+			align-items: center
+
+		input
+			width: 100%
+			max-width: 350px
+			background-color: transparent
+			border: 1px solid var(--color-gold-border)
+			border-radius: 32px
+			color: var(--color-brown-020)
+			font-size: 14px
+			line-height: 20px
+			padding: 16px 20px
+			margin: 0px 0px 20px 0px
+			outline: none
+
+			&::placeholder
+				font-family: var(--font-family-primary)
+				color: var(--color-brown-020)
+				font-size: 14px
+				line-height: 20px
+
+		button
+			width: 100%
+			max-width: 350px
+			background-color: var(--color-brown-005)
+			font-family: var(--font-family-primary)
+			color: var(--color-brown-200)
+			font-size: 14px
+			line-height: 20px
+			border-radius: 32px
+			padding: 16px 16px
+			outline: none
+			border: none
+			margin: 0px 0px 20px 0px
+			cursor: pointer
+			@include element_animation
+
+			&:hover
+				background-color: var(--color-brown-100)
+				color: var(--color-brown-005)
+
+		p
+			color: rgba(216, 209, 201, 0.5)
+			font-size: 11px
+			line-height: 16px
+			text-transform: uppercase
+			text-align: center
+
+			a
+				color: var(--color-gold-020)
+				opacity: 1
+				text-decoration: none
+
+.form-column-02
+	width: 130%
+	position: relative
+	img
+		width: 130%
+		height: 100%
+		position: absolute
+		left: 0px
+		top: 0px
+		object-fit: cover
+
+
+.form-block-01
+	display: block
+.form-block-02
+	display: none
+
+
+/* FORM SECTION STYLE SETTINGS END. */
