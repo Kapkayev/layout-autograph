@@ -192,14 +192,25 @@ jQuery(document).ready(function(){
 	let sectionHeightHeader = jQuery('.section-header').height();
 	let sectionHeightProject = jQuery('.section-project').height();
 	let sectionHeightMap = jQuery('.section-map').height();
+	let sectiontInformationMap = jQuery('.section-information').height();
 
-	let allSectionHeight = sectionHeightHeader + sectionHeightProject;
+	let heightToMap = sectionHeightHeader + sectionHeightProject + (sectionHeightMap / 4);
 
 	jQuery(window).scroll(function() {
-		if (jQuery(this).scrollTop() >= allSectionHeight) {
+		if (jQuery(this).scrollTop() >= heightToMap) {
 			jQuery(".map-row-03").addClass("map-block-parallax");
 		} else {
 			jQuery(".map-row-03").removeClass("map-block-parallax");
+		}
+	});
+
+	let heightToInformation = sectionHeightHeader + sectionHeightProject + sectionHeightMap + (sectiontInformationMap / 3);
+
+	jQuery(window).scroll(function() {
+		if (jQuery(this).scrollTop() >= heightToInformation) {
+			jQuery(".information-row-02").addClass("information-block-parallax");
+		} else {
+			jQuery(".information-row-02").removeClass("information-block-parallax");
 		}
 	});
 
