@@ -9,8 +9,9 @@
 	box-sizing: border-box
 
 html
-	overflow: hidden
-	overflow-x: hidden
+	// overflow: hidden
+	// overflow-x: hidden
+	overflow-y: auto
 
 body
 	// height: 9000px
@@ -586,7 +587,17 @@ h1, h2, h3, h4, h5, h6
 	display: flex
 	flex-direction: column
 	justify-content: flex-end
+	align-items: center
 	padding: 48px 0px
+	position: relative
+
+.preloader-animation
+	width: 55%
+	height: 100vh
+	display: flex
+	align-items: center
+	justify-content: center
+	margin: 0px auto
 
 .preloader-block
 	width: 100%
@@ -594,6 +605,8 @@ h1, h2, h3, h4, h5, h6
 	display: flex
 	justify-content: space-between
 	align-items: center
+	position: absolute
+	bottom: 48px
 
 	.preloader-item
 		display: flex
@@ -646,7 +659,7 @@ h1, h2, h3, h4, h5, h6
 		align-items: center
 		border-radius: 50%
 
-		font-family: var(--font-family-primary)
+		font-family: var(--font-family-titles)
 		font-size: 28px
 		line-height: 32px
 		letter-spacing: -0.01em
@@ -1329,6 +1342,9 @@ h1, h2, h3, h4, h5, h6
 
 /* FORM SECTION STYLE SETTINGS END. */
 
+
+/* INFORMATION SECTION STYLE SETTINGS START: */
+
 .section-information
 	background-color: var(--color-dark-100)
 	position: relative
@@ -1438,7 +1454,6 @@ h1, h2, h3, h4, h5, h6
 .information-schema-image
 	width: 100%
 	height: 100%
-	// max-height: 700px
 	background-image: url('../media/information.jpg')
 	background-repeat: no-repeat
 	background-position: left top
@@ -1451,16 +1466,6 @@ h1, h2, h3, h4, h5, h6
 	position: absolute
 	left: 0px
 	top: 0px
-	// max-height: 700px
-	// background-image: url('../media/information.jpg')
-	// background-repeat: no-repeat
-	// background-position: left top
-	// background-size: cover
-	// position: relative
-
-	// img
-	// 	width: 100%
-	// 	max-height: 700px
 
 	.schema-point
 		position: absolute
@@ -1531,13 +1536,6 @@ h1, h2, h3, h4, h5, h6
 			left: 10%
 			top: 80%
 
-
-
-
-
-
-
-
 .information-row-02
 	width: 100%
 	position: absolute
@@ -1607,4 +1605,610 @@ h1, h2, h3, h4, h5, h6
 			align-items: center
 			padding: 0px 0px 0px 32px
 			border-left: 1px solid var(--color-brown-border)
+
+/* INFORMATION SECTION STYLE SETTINGS END. */
+
+
+/* SERVICE SECTION STYLE SETTINGS START: */
+
+.section-service
+	background-color: var(--color-brown-200)
+	position: relative
+
+.service-container
+	padding: 80px 0px 80px 0px
+
+	.title-label
+		.label-number
+			padding: 0px 0px 0px 15px
+		.label-text
+			background-color: var(--color-brown-200)
+
+.service-block
+	width: 100%
+	display: flex
+	column-gap: 40px
+	margin: 40px 0px 0px 0px
+
+	.service-column-01
+		width: 63%
+		position: relative
+		padding: 0px 40px 0px 0px
+		border-right: 1px solid var(--color-gold-border)
+
+	.service-column-02
+		position: relative
+		width: 37%
+
+.service-row-01
+	width: 100%
+	display: flex
+	column-gap: 90px
+	border-bottom: 1px solid var(--color-gold-border)
+	padding: 0px 0px 25px 0px
+	margin: 0px 0px 32px 0px
+
+	& > p
+		color: var(--color-brown-020)
+		font-size: 14px
+		line-height: 28px
+
+	.service-title
+		& > div
+			display: flex
+			align-items: center
+			column-gap: 16px
+
+			p
+				color: var(--color-brown-020)
+				font-size: 24px
+				line-height: 32px
+
+			div
+				flex-grow: 1
+				height: 3px
+				background-color: var(--color-gold-150)
+
+		h2
+			font-size: 72px
+			line-height: 96px
+			color: var(--color-gold-150)
+			text-transform: uppercase
+
+
+
+.service-slider
+	width: 100%
+	position: relative
+
+	.service-item
+		width: 100%
+
+		.service-item-image
+			width: 100%
+			height: 410px
+			position: relative
+			overflow: hidden
+			margin: 0px 0px 40px 0px
+
+			img
+				width: 100%
+				height: 100%
+				position: absolute
+				left: 50%
+				top: 50%
+				transform: translate(-50%, -50%)
+				object-fit: cover
+
+		.service-item-text
+			width: 72.5%
+			overflow: hidden
+
+			p
+				&:first-child
+					color: var(--color-brown-020)
+					font-size: 24px
+					line-height: 32px	
+					margin: 0px 0px 24px 0px
+
+				&:last-child
+					color: var(--color-brown-020)
+					font-size: 14px
+					line-height: 28px	
+
+.service-navigation
+	display: flex
+	justify-content: flex-end
+	column-gap: 8px
+	position: absolute
+	right: 0px
+	bottom: 0px
+	background-color: var(--color-brown-200)
+	padding: 10px 0px 0px 10px
+	z-index: 80
+
+
+	.service-navigation-item
+		width: 56px
+		height: 56px
+		border-radius: 50%
+		display: flex
+		justify-content: center
+		align-items: center
+		cursor: pointer
+		position: relative
+		@include element_animation
+
+		&:first-child
+			border: 1px solid var(--color-gold-150)
+			path
+				stroke: var(--color-gold-005)
+
+			&:hover
+				background-color: var(--color-gold-150)
+				path
+					stroke: var(--color-brown-300)
+
+
+		&:last-child
+			background-color: var(--color-gold-150)
+			path
+				stroke: var(--color-brown-300)
+
+			&:hover
+				background-color: var(--color-gold-200)
+
+.service-button-container
+	width: 100%
+	display: flex
+	flex-wrap: wrap
+	column-gap: 16px
+	row-gap: 16px
+
+	.service-button-middle
+		display: flex
+		flex-direction: column
+		justify-content: space-between
+		column-gap: 16px
+
+		a.service-button-item
+			width: 380px
+			height: 72px
+			display: flex
+			flex-direction: row-reverse
+			justify-content: space-between
+			flex-grow: 0
+			align-items: center
+			padding: 16px 24px
+
+	a.service-button-item
+		width: 140px
+		height: 155px
+		display: inline-flex
+		flex-direction: column
+		justify-content: space-between
+		flex-grow: 1
+		border: 1px solid var(--color-gold-border)
+		border-radius: 16px
+		text-decoration: none
+		padding: 20px 20px 16px 24px
+
+		@include element_animation
+
+		p
+			color: var(--color-brown-020)
+			font-size: 14px
+			line-height: 22px
+		div
+			
+			display: flex
+			justify-content: flex-end
+
+
+		&:hover, &.active
+			background-color: var(--color-brown-020)
+
+			p
+				color: var(--color-brown-200)
+
+			.img-svg path
+				// fill: var(--color-brown-200)
+				stroke: var(--color-brown-200)
+
+
+/* SERVICE SECTION STYLE SETTINGS END. */
+
+
+.section-apartment
+	background-color: var(--color-brown-005)
+	padding: 80px 0px
+
+.apartment-container
+	.title-label
+		.label-number
+			padding: 0px 0px 0px 15px
+
+.apartment-block-title
+	width: 100%
+	margin: 40px 0px
+
+	h2
+		color: var(--color-brown-200)
+		font-size: 52px
+		line-height: 64px
+
+		span
+			color: var(--color-brown-100)
+
+.appartment-row-01
+	width: 100%
+	display: flex
+	justify-content: space-between
+	align-items: center
+	flex-wrap: wrap
+	column-gap: 24px
+	padding: 0px 0px 40px 0px
+	border-bottom: 1px solid var(--color-brown-border)
+
+.input-block
+
+	display: flex
+	flex-direction: column
+
+	p
+		font-size: 11px
+		line-height: 16px
+		color: var(--color-brown-200)
+		text-transform: uppercase
+		margin: 0px 0px 10px 0px
+
+	&.select
+
+		.custom-select-container 
+			&.customSelect
+				width: 320px
+				height: 52px
+				position: relative
+				@include element_animation
+
+				&.is-open
+					.custom-select-opener
+						&::after
+							transform: rotate(0deg)
+							top: 49%
+							right: 18px
+
+					.custom-select-panel
+						max-height: none
+
+				.custom-select-opener
+					background-color: transparent
+					border: 1px solid var(--color-brown-border)
+					border-radius: 25px
+					padding: 12px 17px
+					list-style: none
+					cursor: pointer
+
+					&::after
+						content: ''
+						position: absolute
+						width: 14px
+						height: 7px
+						right: 20px
+						top: 50%
+						background: url('../media/icons/select-arrow.svg')
+						background-repeat: no-repeat
+						background-size: contain
+						transform: rotate(180deg)
+
+					span
+						font-family: var(--font-family-primary)
+						color: var(--color-brown-200)
+						font-size: 14px
+						line-height: 20px
+
+				.custom-select-panel
+					overflow: hidden
+					width: 100%
+					position: absolute
+					top: calc(100% + .5rem)
+					left: 0
+					list-style-type: none
+					background: var(--color-brown-005)
+					border-radius: 12px
+					box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.12)
+
+					.custom-select-option
+						font-family: var(--font-family-primary)
+						color: var(--color-brown-200)
+						font-size: 14px
+						line-height: 20px
+						padding: 12px 16px
+						cursor: pointer
+						position: relative
+
+						@include element_animation
+
+						&:hover, &.has-focus
+							background: var(--color-brown-020)
+							color: var(--color-brown-100)
+
+						&:first-child
+							padding: 20px 16px 12px 16px
+						&:last-child
+							padding: 12px 16px 20px 16px
+
+						&.is-selected::before
+							content: ''
+							position: absolute
+							width: 11px
+							height: 8px
+							right: 10px
+							top: 45%
+							background: url('../media/icons/check.svg')
+							background-repeat: no-repeat
+							background-size: contain
+	&.buttons
+
+		.radio-group
+			display: flex
+			align-items: center
+			column-gap: 5px
+
+			input[type=radio]
+				display: none
+
+			label
+				display: inline-flex
+				justify-content: center
+				align-items: center
+				width: 52px
+				height: 52px
+				border: 1px solid var(--color-brown-border)
+				border-radius: 25px
+				cursor: pointer
+				font-family: var(--font-family-primary)
+				color: var(--color-brown-200)
+				font-size: 14px
+				line-height: 20px
+
+				@include element_animation
+
+				&:hover
+					border: 1px solid var(--color-brown-100)
+					color: var(--color-brown-100)
+
+				&:nth-child(2)
+					width: 68px
+					height: 52px
+
+				&.selectes
+					background-color: var(--color-brown-200)
+					color: var(--color-brown-005)
+					border: none
+
+	&.range 
+		width: 100%
+		max-width: 320px
+
+		.range-input
+			width: 100%
+			height: 52px
+			background-color: transparent
+			border: 1px solid var(--color-brown-border)
+			border-radius: 25px
+			padding: 12px 17px
+			position: relative
+			display: flex
+			align-items: center
+
+			.values
+				width: 100%
+				display: flex
+				justify-content: space-between
+				align-items: center
+				color: var(--color-brown-200)
+				font-weight: 500
+				font-size: 14px
+				line-height: 20px	
+
+			.custom-range
+				width: 100%
+				max-width: 280px
+				height: 1px
+				background: var(--color-brown-200)
+				border: none
+				box-shadow: none
+				position: absolute
+				bottom: 0px
+
+				.noUi-base
+					.noUi-connects
+						.noUi-connect
+							background-color: var(--color-brown-100)
+
+					.noUi-origin
+						.noUi-handle
+							width: 20px
+							height: 20px
+							border-radius: 25px
+							background: var(--color-brown-100)
+							border: 5px solid var(--color-brown-005)
+							box-shadow: none
+							cursor: pointer
+							top: -10px
+
+							&:before
+								display: none
+							&:after
+								display: none
+
+					&:first-child
+						.noUi-tooltip
+							background: transparent
+
+
+.appartment-row-02
+	width: 100%
+	display: flex
+	column-gap: 80px
+	padding: 40px 0px 0px 0px
+
+	.appartment-column-01
+		width: 50%
+		padding: 0px 24px 0px 0px
+		border-right: 1px solid var(--color-brown-border)
+
+	.appartment-column-02
+		width: 50%
+
+.search-container
+	width: 100%
+
+	& > p 
+		color: var(--color-brown-200)
+		font-size: 11px
+		line-height: 16px	
+		text-transform: uppercase
+
+	.search-block
+		width: 100%
+		height: 484px
+		overflow-y: auto
+		margin: 32px 0px 0px 0px
+		padding: 0px 30px 0px 0px
+
+		&::-webkit-scrollbar
+			width: 6px
+			border-radius: 3px
+
+
+		&::-webkit-scrollbar-track-piece
+			background-color: var(--color-brown-border)
+			border-radius: 3px
+
+
+		&::-webkit-scrollbar-thumb
+			background: var(--color-brown-200)
+			border-radius: 3px
+
+
+		&::-webkit-scrollbar-corner
+			background-color: var(--color-brown-border)
+
+		.search-block-item
+			width: 100%
+			height: 112px
+			display: flex
+			column-gap: 16px
+			cursor: pointer
+			color: var(--color-brown-200)
+			border-radius: 12px
+			padding: 16px 24px 16px 24px
+			margin: 0px 0px 12px 0px
+
+			@include element_animation
+
+			&:hover
+				background-color: var(--color-brown-200)
+				color: var(--color-brown-005)
+
+				.item-caption
+					div
+						&:first-child
+							border-bottom: 1px solid var(--color-brown-005)
+
+			.item-image
+				width: 20%
+				height: auto
+
+				img
+					width: 100%
+
+			.item-caption
+				flex-grow: 1
+				display: flex
+				flex-direction: column
+
+				div
+					&:first-child
+						display: flex
+						height: 50%
+						justify-content: space-between
+						align-items: center
+						border-bottom: 1px solid var(--color-brown-border)
+
+						p
+							font-size: 18px
+							line-height: 24px
+
+					&:last-child
+						display: flex
+						height: 50%	
+						align-items: center
+
+						span
+							font-size: 12px
+							line-height: 18px
+
+							&::after
+								content: ''
+								display: inline-block
+								width: 3px
+								height: 3px
+								border-radius: 25px
+								background-color: var(--color-brown-200)
+								margin: 2px 8px
+
+							&:last-child
+								&::after
+									display: none
+
+.plan-image-block
+	width: 100%
+	height: 100%
+	display: flex
+	column-gap: 12px
+
+	.plan-image-item
+		&:first-child
+			height: 100%
+			display: flex
+			justify-content: center
+			align-items: center
+			flex-grow: 1
+			a
+				width: 100%
+				height: 100%
+				flex-grow: 1
+				text-decoration: none
+
+				img
+					width: 100%
+					cursor: pointer
+
+		&:last-child
+			height: 100%
+			display: flex
+			flex-direction: column
+			justify-content: space-between
+
+			.compas
+				width: 76px
+				height: 76px
+				img
+					width: 100%
+
+			.maximize
+				width: 40px
+				height: 40px
+				cursor: pointer
+				img
+					width: 100%
+
+.plan-modal
+	img.mfp-img
+		width: 100%
+
+
 

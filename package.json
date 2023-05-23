@@ -15,5 +15,9 @@
     "gulp-less": "^5.0.0",
     "gulp-sass": "^5.0.0",
     "sass": "^1.39.0"
+  },
+  "dependencies": {
+    "gulp-connect-php": "^1.0.3",
+    "nouislider": "^15.7.0"
   }
 }

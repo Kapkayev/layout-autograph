@@ -52,14 +52,41 @@ jQuery(document).ready(function(){
 >>> SENDING THE FORM START:
 --------------------------------------------------------------*/
 	
-	jQuery(".contact-form").submit(function() {
+	function showSuccesfullMessageModal(){
+		jQuery('.call-block-01').css('display','none');
+	}
+
+	function showSuccesfullMessageSection(){
+		jQuery('.form-block-01').css('display','none');
+		jQuery('.form-block-02').css('display','block');
+	}
+
+
+	jQuery(".call-form").submit(function() {
         var th = jQuery(this);
         jQuery.ajax({
             type: "POST",
-            url: "/mail.php",
+            url: "./mail.php",
             data: th.serialize()
         }).done(function() {
         	alert('Заявка успешно отправлена!');
+        	showSuccesfullMessageModal();
+            setTimeout(function() {
+                th.trigger("reset");
+            }, 1000);
+        });
+        return false;
+    });
+
+    jQuery(".form-form").submit(function() {
+        var th = jQuery(this);
+        jQuery.ajax({
+            type: "POST",
+            url: "./mail.php",
+            data: th.serialize()
+        }).done(function() {
+        	alert('Заявка успешно отправлена!');
+        	showSuccesfullMessageSection();
             setTimeout(function() {
                 th.trigger("reset");
             }, 1000);
@@ -131,8 +158,9 @@ jQuery(document).ready(function(){
 	    smartSpeed: 1000,
 	    dotsContainer: '.gallery-progress',
 	    onInitialized: function(e) {
-	    jQuery('.gallery-counter').text( '01 / ')
-	    jQuery('.gallery-number').text( '0' + this.items().length)}
+		    jQuery('.gallery-counter').text( '01 / ')
+		    jQuery('.gallery-number').text( '0' + this.items().length)
+		}
 	})
 
 	let owlGallerySlider = jQuery('.gallery-slider');
@@ -267,14 +295,154 @@ jQuery('.call-close').click(function(){
 >>> CALL MODAL CODE END.
 --------------------------------------------------------------*/
 
-function showSuccesfullMessageModal(){
-	jQuery('.call-block-01').css('display','none');
-}
 
-function showSuccesfullMessageSection(){
-	jQuery('.form-block-01').css('display','none');
-	jQuery('.form-block-02').css('display','block');
-}
+/*--------------------------------------------------------------
+>>> SVG CODE START:
+--------------------------------------------------------------*/
 
+jQuery("img.img-svg").each(function () {
+    var $img = jQuery(this);
+    var imgClass = $img.attr("class");
+    var imgURL = $img.attr("src");
+    jQuery.get(imgURL, function (data) {
+        var $svg = jQuery(data).find("svg");
+        if (typeof imgClass !== "undefined") {
+            $svg = $svg.attr("class", imgClass + " replaced-svg");
+        }
+        $svg = $svg.removeAttr("xmlns:a");
+        if (!$svg.attr("viewBox") && $svg.attr("height") && $svg.attr("width")) {
+            $svg.attr("viewBox", "0 0 " + $svg.attr("height") + " " + $svg.attr("width"))
+        }
+        $img.replaceWith($svg);
+    }, "xml");
+});
+
+/*--------------------------------------------------------------
+>>> SVG CODE END.
+--------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------
+>>> SERVICE SLIDER CODE START:
+--------------------------------------------------------------*/
+
+	jQuery('.service-slider').owlCarousel({
+	    loop: false,
+	    touchDrag: true,
+	    mouseDrag: true,
+	    nav: false,
+	    dots: false,
+	    autoWidth: false,
+	    autoHeight: false,
+	    autoplay: false,
+	    items:1,
+	    smartSpeed: 200,
+	    URLhashListener:true,
+	    startPosition: 'URLHash',
+	    autoplay: false,
+	})
+
+	let owlServiceSlider = jQuery('.service-slider');
+	owlServiceSlider.owlCarousel();
+
+	jQuery('#service-prev').click(function() {
+	    owlServiceSlider.trigger('prev.owl.carousel', [300]);
+	    selectActiveElement();
+	})
+
+	jQuery('#service-next').click(function() {
+	    owlServiceSlider.trigger('next.owl.carousel');
+	    selectActiveElement();
+	})
+
+	function selectActiveElement(){
+		const locationName = location.href
+		const locationNameSplit = locationName.split('#')[1]
+
+		jQuery(".service-button-item").each(function () {
+			const itemName = jQuery(this).attr('href')
+			const itemNameSplit = itemName.split('#')[1]
+		
+			if (itemNameSplit === locationNameSplit) {
+				jQuery(".service-button-item").removeClass('active');
+				jQuery(this).addClass('active');
+			}
+		})
+	}
+
+	jQuery(".service-button-item").click(function () {
+		jQuery(".service-button-item").removeClass('active');
+		jQuery(this).addClass('active');
+
+		const locationName = location.href
+		const locationNameSplit = locationName.split('#')[0]
+
+		const itemName = jQuery(this).attr('href')
+		const itemNameSplit = itemName.split('#')[1]
+
+		location.href = locationNameSplit + '#' + itemNameSplit;
+	})
+
+/*--------------------------------------------------------------
+>>> SERVICE SLIDER CODE END.
+--------------------------------------------------------------*/
 
 });
+
+/*--------------------------------------------------------------
+>>> SERVICE BUTTONS CODE START:
+--------------------------------------------------------------*/
+
+jQuery(document).ready(function(){
+	const locationName = location.href
+	const locationNameSplit = locationName.split('#')[1]
+
+	jQuery(".service-button-item").each(function () {
+		const itemName = jQuery(this).attr('href')
+		const itemNameSplit = itemName.split('#')[1]
+	
+		if (itemNameSplit === locationNameSplit) {
+			jQuery(".service-button-item").removeClass('active');
+			jQuery(this).addClass('active');
+		}
+	})
+})
+
+/*--------------------------------------------------------------
+>>> SERVICE BUTTONS CODE END.
+--------------------------------------------------------------*/
+
+
+var range = document.getElementById('range');
+
+noUiSlider.create(range, {
+    start: [100, 200],
+    connect: true,
+    range: {
+        'min': 88.3,
+        'max': 260
+    },
+    behaviour: 'tap-drag',
+    tooltips: false,
+});
+
+var nodes = [
+    document.getElementById('lower-value'), // 0
+    document.getElementById('upper-value')  // 1
+];
+
+range.noUiSlider.on('update', function (values, handle, unencoded, isTap, positions) {
+    nodes[handle].innerHTML = `${values[handle].slice(0, -1)} м²`;
+});
+
+customSelect('select');
+
+
+
+
+
+jQuery('.open-plan-image').magnificPopup({
+		type: 'image',
+		closeOnContentClick: true,
+		mainClass: 'mfp-no-margins mfp-with-zoom plan-modal'
+	});
