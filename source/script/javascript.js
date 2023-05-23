@@ -2,18 +2,18 @@
 >>>  PRELOADER CODE START:
 --------------------------------------------------------------*/
 
-// jQuery(window).on('load', function () {
+jQuery(window).on('load', function () {
 
-//     setTimeout(function(){
-// 		jQuery(".preloader-background").css('transform','translateY(0)');
-// 	}, 3000)
+    setTimeout(function(){
+		jQuery(".preloader-background").css('transform','translateY(0)');
+	}, 3000)
 
-// 	setTimeout(function(){
-// 		jQuery(".section-preloader").css('transform','translateY(-100%)');
-// 		jQuery('html').css('overflowY', 'auto')
-// 	}, 3700)
+	setTimeout(function(){
+		jQuery(".section-preloader").css('transform','translateY(-100%)');
+		jQuery('html').css('overflowY', 'auto')
+	}, 3700)
 		
-//   })
+  })
 
 /*--------------------------------------------------------------
 >>>  PRELOADER CODE END.
