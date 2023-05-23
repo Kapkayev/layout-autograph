@@ -983,6 +983,7 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.01em;
   border-radius: 28px;
   padding: 17px 24px;
+  cursor: pointer;
   transition-timing-function: ease-in-out;
   transition-duration: 0.2s;
 }
@@ -1873,11 +1874,15 @@ h1, h2, h3, h4, h5, h6 {
 .service-button-container a.service-button-item:hover p, .service-button-container a.service-button-item.active p {
   color: var(--color-brown-200);
 }
-.service-button-container a.service-button-item:hover .img-svg path, .service-button-container a.service-button-item.active .img-svg path {
+.service-button-container a.service-button-item:hover .fill.img-svg path, .service-button-container a.service-button-item.active .fill.img-svg path {
+  fill: var(--color-brown-200);
+}
+.service-button-container a.service-button-item:hover .stroke.img-svg path, .service-button-container a.service-button-item.active .stroke.img-svg path {
   stroke: var(--color-brown-200);
 }
 
 /* SERVICE SECTION STYLE SETTINGS END. */
+/* APARTMENT SECTION STYLE SETTINGS START: */
 .section-apartment {
   background-color: var(--color-brown-005);
   padding: 80px 0px;
@@ -2259,4 +2264,72 @@ h1, h2, h3, h4, h5, h6 {
 
 .plan-modal img.mfp-img {
   width: 100%;
+}
+
+/* APARTMENT SECTION STYLE SETTINGS END. */
+.section-interactive-map.active {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  z-index: 50;
+}
+.section-interactive-map.active .interactive-map-container .interactive-map #map-full {
+  transform: translateX(0%);
+}
+.section-interactive-map .interactive-map-container {
+  width: 100%;
+  height: 100%;
+}
+.section-interactive-map .interactive-map-container .interactive-map {
+  width: 100%;
+  height: 100%;
+}
+.section-interactive-map .interactive-map-container .interactive-map #map-full {
+  width: 75%;
+  height: 100%;
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  border-left: 1px solid var(--color-brown-border);
+  transform: translateX(100%);
+  transition-duration: 0.5s;
+  transition-timing-function: ease-in-out;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+}
+
+div#map a,
+div#map button,
+div.gm-bundled-control div.gmnoprint {
+  display: none !important;
+}
+
+.map-close {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-brown-200);
+  cursor: pointer;
+  position: absolute;
+  left: -28px;
+  top: 50%;
+  z-index: 700;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.2s;
+  opacity: 0;
+}
+.map-close:hover {
+  background-color: var(--color-brown-100);
+}
+.map-close.active {
+  opacity: 1;
 }

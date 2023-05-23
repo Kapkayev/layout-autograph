@@ -924,6 +924,7 @@ h1, h2, h3, h4, h5, h6
 			letter-spacing: 0.01em
 			border-radius: 28px
 			padding: 17px 24px
+			cursor: pointer
 
 			@include element_animation
 
@@ -1811,13 +1812,16 @@ h1, h2, h3, h4, h5, h6
 			p
 				color: var(--color-brown-200)
 
-			.img-svg path
-				// fill: var(--color-brown-200)
+			.fill.img-svg path
+				fill: var(--color-brown-200)
+			.stroke.img-svg path
 				stroke: var(--color-brown-200)
 
 
 /* SERVICE SECTION STYLE SETTINGS END. */
 
+
+/* APARTMENT SECTION STYLE SETTINGS START: */
 
 .section-apartment
 	background-color: var(--color-brown-005)
@@ -1948,6 +1952,7 @@ h1, h2, h3, h4, h5, h6
 							background: url('../media/icons/check.svg')
 							background-repeat: no-repeat
 							background-size: contain
+
 	&.buttons
 
 		.radio-group
@@ -2046,7 +2051,6 @@ h1, h2, h3, h4, h5, h6
 					&:first-child
 						.noUi-tooltip
 							background: transparent
-
 
 .appartment-row-02
 	width: 100%
@@ -2210,5 +2214,76 @@ h1, h2, h3, h4, h5, h6
 	img.mfp-img
 		width: 100%
 
+/* APARTMENT SECTION STYLE SETTINGS END. */
 
+
+
+
+
+.section-interactive-map
+	&.active
+		width: 100%
+		height: 100vh
+		position: fixed
+		right: 0px
+		top: 0px
+		z-index: 50
+
+		.interactive-map-container
+			.interactive-map
+				#map-full
+					transform: translateX(0%)
+
+	.interactive-map-container
+		width: 100%
+		height: 100%
+
+		.interactive-map
+			width: 100%
+			height: 100%
+
+			#map-full
+				width: 75%
+				height: 100%
+				position: fixed
+				right: 0px
+				top: 0px
+				border-left: 1px solid var(--color-brown-border)
+				transform: translateX(100%)
+				transition-duration: 0.5s
+				transition-timing-function: ease-in-out
+
+#map
+	width: 100%
+	height: 100%
+
+div#map a,
+div#map button,
+div.gm-bundled-control div.gmnoprint 
+	display: none !important
+
+.map-close
+	width: 56px
+	height: 56px
+	display: flex
+	justify-content: center
+	align-items: center
+	background-color: var(--color-brown-200)
+	cursor: pointer
+
+	position: absolute
+	left: -28px
+	top: 50%
+	z-index: 700
+	transform: translateY(-50%)
+	border-radius: 50%
+
+	@include element_animation
+	opacity: 0
+
+	&:hover
+		background-color: var(--color-brown-100)
+
+	&.active
+		opacity: 1
 

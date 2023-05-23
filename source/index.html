@@ -21,7 +21,7 @@
 </head>
 <body>
 
-<section class="wrapper-full section-preloader">
+<!-- <section class="wrapper-full section-preloader">
 	<div class="wrapper-fix">
 		<div class="preloader-container">
 			<div class="preloader-animation">
@@ -40,7 +40,7 @@
 		</div>
 		<div class="preloader-background"></div>
 	</div>
-</section>
+</section> -->
 
 <header class="wrapper-full section-header">
 	<div class="wrapper-fix">
@@ -398,7 +398,7 @@
 					<div class="map-row-02">
 						<p>Алматы, <br> ул. Жамакаева, 191</p>
 						<div class="button-map">
-							<a href="#" class="button">Интерактивная карта</a>
+							<a class="button open-map">Интерактивная карта</a>
 						</div>
 					</div>
 					<div class="map-row-03">
@@ -439,7 +439,21 @@
 					</div>
 				</div>
 				<div class="map-column-02">
+					<div id="map"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
 
+<section class="wrapper-full section-interactive-map">
+	<div class="interactive-map-container">
+		<div class="interactive-map">
+			<div id="map-full">
+				<div class="map-close">
+					<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M11 1L1 11M1 1L11 11" stroke="#E0DCD5" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+					</svg>
 				</div>
 			</div>
 		</div>
@@ -513,9 +527,9 @@
 													<path d="M17.7959 46.2058C24.4934 52.9033 35.3524 52.9033 42.05 46.2058C35.3524 39.5082 24.4936 39.5082 17.7959 46.2058Z" stroke="#B56041" stroke-width="3.2" stroke-miterlimit="10"/>
 												</g>
 												<defs>
-												<clipPath id="clip0_130_957">
-													<rect width="64" height="64" fill="white"/>
-												</clipPath>
+													<clipPath id="clip0_130_957">
+														<rect width="64" height="64" fill="white"/>
+													</clipPath>
 												</defs>
 											</svg>
 
@@ -532,10 +546,10 @@
 													<path d="M61.497 37.876L43.872 10.876L37.7793 20.2095" stroke="#B56041" stroke-width="3.6" stroke-miterlimit="10"/>
 													<path d="M15.7471 17.813C28.6846 17.813 25.4971 24.1255 38.9971 24.1255" stroke="#B56041" stroke-width="3.6" stroke-miterlimit="10"/>
 												</g>
-												<	defs>
+												<defs>
 													<clipPath id="clip0_130_956">
-													<rect width="64" height="64" fill="white"/>
-												</clipPath>
+														<rect width="64" height="64" fill="white"/>
+													</clipPath>
 												</defs>
 											</svg>
 
@@ -646,35 +660,35 @@
 
 							<a href="#item-01" class="service-button-item active">
 								<div>
-									<img src="media/service-icons/icon-01.svg" class="img-svg">
+									<img src="media/service-icons/icon-01.svg" class="img-svg fill" alt="Иконка">
 								</div>
 								<p class="caption">Сауна и хамам</p>
 							</a>
 
-							<a href="#item-02" class="service-button-item">
+							<a href="#item-02" class="service-button-item" >
 								<div>
-									<img src="media/service-icons/icon-02.svg" class="img-svg">
+									<img src="media/service-icons/icon-02.svg" class="img-svg fill" alt="Иконка">
 								</div>
 								<p class="caption">Kids Club</p>
 							</a>
 
 							<a href="#item-03" class="service-button-item">
 								<div>
-									<img src="media/service-icons/icon-03.svg" class="img-svg">
+									<img src="media/service-icons/icon-03.svg" class="img-svg stroke" alt="Иконка">
 								</div>
 								<p class="caption">Пекарня</p>
 							</a>
 
 							<a href="#item-04" class="service-button-item">
 								<div>
-									<img src="media/service-icons/icon-04.svg" class="img-svg">
+									<img src="media/service-icons/icon-04.svg" class="img-svg stroke" alt="Иконка">
 								</div>
 								<p class="caption">Электро-самокаты</p>
 							</a>
 
 							<a href="#item-05" class="service-button-item">
 								<div>
-									<img src="media/service-icons/icon-05.svg" class="img-svg">
+									<img src="media/service-icons/icon-05.svg" class="img-svg fill" alt="Иконка">
 								</div>
 								<p class="caption">Консьерж-сервис</p>
 							</a>
@@ -682,13 +696,13 @@
 							<div class="service-button-middle">
 								<a href="#item-06" class="service-button-item">
 									<div>
-										<img src="media/service-icons/icon-06.svg" class="img-svg">
+										<img src="media/service-icons/icon-06.svg" class="img-svg stroke" alt="Иконка">
 									</div>
 									<p class="caption">Прогулочная аллея</p>
 								</a>
 								<a href="#item-07" class="service-button-item">
 									<div>
-										<img src="media/service-icons/icon-07.svg" class="img-svg">
+										<img src="media/service-icons/icon-07.svg" class="img-svg stroke" alt="Иконка">
 									</div>
 									<p class="caption">Комната для ожидания водителей</p>
 								</a>
@@ -696,21 +710,21 @@
 
 							<a href="#item-08" class="service-button-item">
 								<div>
-									<img src="media/service-icons/icon-08.svg" class="img-svg">
+									<img src="media/service-icons/icon-08.svg" class="img-svg stroke" alt="Иконка">
 								</div>
 								<p class="caption">Гостевой номер</p>
 							</a>
 
 							<a href="#item-09" class="service-button-item">
 								<div>
-									<img src="media/service-icons/icon-09.svg" class="img-svg">
+									<img src="media/service-icons/icon-09.svg" class="img-svg fill" alt="Иконка">
 								</div>
 								<p class="caption">Touch & Face ID</p>
 							</a>
 
 							<a href="#item-10" class="service-button-item">
 								<div>
-									<img src="media/service-icons/icon-10.svg" class="img-svg">
+									<img src="media/service-icons/icon-10.svg" class="img-svg fill" alt="Иконка">
 								</div>
 								<p class="caption">Smart дверные замки</p>
 							</a>
@@ -718,14 +732,14 @@
 
 							<a href="#item-11" class="service-button-item">
 								<div>
-									<img src="media/service-icons/icon-11.svg" class="img-svg">
+									<img src="media/service-icons/icon-11.svg" class="img-svg fill" alt="Иконка">
 								</div>
 								<p class="caption">Зарядные станции для электроавтомобилей</p>
 							</a>
 
 							<a href="#item-12" class="service-button-item">
 								<div>
-									<img src="media/service-icons/icon-12.svg" class="img-svg">
+									<img src="media/service-icons/icon-12.svg" class="img-svg fill" alt="Иконка">
 								</div>
 								<p class="caption">Система автоматизированного паркинга</p>
 							</a>
@@ -739,7 +753,7 @@
 
 						<div class="service-item item" data-hash="item-01">
 							<div class="service-item-image">
-								<img src="media/service-slide.jpg" alt="Service slide">
+								<img src="media/service-slide.jpg" alt="Сауна и хамам">
 							</div>
 							<div class="service-item-text">
 								<p>Сауна и хамам</p>
@@ -749,7 +763,7 @@
 
 						<div class="service-item item" data-hash="item-02"> 
 							<div class="service-item-image">
-								<img src="media/service-slide.jpg" alt="Service slide">
+								<img src="media/service-slide.jpg" alt="Kids Club">
 							</div>
 							<div class="service-item-text">
 								<p>Kids Club</p>
@@ -759,7 +773,7 @@
 
 						<div class="service-item item" data-hash="item-03">
 							<div class="service-item-image">
-								<img src="media/service-slide.jpg" alt="Service slide">
+								<img src="media/service-slide.jpg" alt="Пекарня">
 							</div>
 							<div class="service-item-text">
 								<p>Пекарня</p>
@@ -769,7 +783,7 @@
 
 						<div class="service-item item" data-hash="item-04">
 							<div class="service-item-image">
-								<img src="media/service-slide.jpg" alt="Service slide">
+								<img src="media/service-slide.jpg" alt="Электро-самокаты">
 							</div>
 							<div class="service-item-text">
 								<p>Электро-самокаты</p>
@@ -779,7 +793,7 @@
 
 						<div class="service-item item" data-hash="item-05">
 							<div class="service-item-image">
-								<img src="media/service-slide.jpg" alt="Service slide">
+								<img src="media/service-slide.jpg" alt="Консьерж-сервис">
 							</div>
 							<div class="service-item-text">
 								<p>Консьерж-сервис</p>
@@ -789,7 +803,7 @@
 
 						<div class="service-item item" data-hash="item-06">
 							<div class="service-item-image">
-								<img src="media/service-slide.jpg" alt="Service slide">
+								<img src="media/service-slide.jpg" alt="Прогулочная аллея">
 							</div>
 							<div class="service-item-text">
 								<p>Прогулочная аллея</p>
@@ -799,7 +813,7 @@
 
 						<div class="service-item item" data-hash="item-07">
 							<div class="service-item-image">
-								<img src="media/service-slide.jpg" alt="Service slide">
+								<img src="media/service-slide.jpg" alt="Комната для ожидания водителей">
 							</div>
 							<div class="service-item-text">
 								<p>Комната для ожидания водителей</p>
@@ -809,7 +823,7 @@
 
 						<div class="service-item item" data-hash="item-08">
 							<div class="service-item-image">
-								<img src="media/service-slide.jpg" alt="Service slide">
+								<img src="media/service-slide.jpg" alt="Гостевой номер">
 							</div>
 							<div class="service-item-text">
 								<p>Гостевой номер</p>
@@ -819,7 +833,7 @@
 
 						<div class="service-item item" data-hash="item-09">
 							<div class="service-item-image">
-								<img src="media/service-slide.jpg" alt="Service slide">
+								<img src="media/service-slide.jpg" alt="Touch & Face ID">
 							</div>
 							<div class="service-item-text">
 								<p>Touch & Face ID</p>
@@ -829,7 +843,7 @@
 
 						<div class="service-item item" data-hash="item-10">
 							<div class="service-item-image">
-								<img src="media/service-slide.jpg" alt="Service slide">
+								<img src="media/service-slide.jpg" alt="Smart дверные замки">
 							</div>
 							<div class="service-item-text">
 								<p>Smart дверные замки</p>
@@ -839,7 +853,7 @@
 
 						<div class="service-item item" data-hash="item-11">
 							<div class="service-item-image">
-								<img src="media/service-slide.jpg" alt="Service slide">
+								<img src="media/service-slide.jpg" alt="Зарядные станции">
 							</div>
 							<div class="service-item-text">
 								<p>Зарядные станции для электроавтомобилей</p>
@@ -849,7 +863,7 @@
 
 						<div class="service-item item" data-hash="item-12">
 							<div class="service-item-image">
-								<img src="media/service-slide.jpg" alt="Service slide">
+								<img src="media/service-slide.jpg" alt="Система автоматизированного паркинга">
 							</div>
 							<div class="service-item-text">
 								<p>Система автоматизированного паркинга</p>
@@ -956,7 +970,7 @@
 
 							<div class="search-block-item">
 								<div class="item-image">
-									<img src="media/search-block/plan-01.svg">
+									<img src="media/search-block/plan-01.svg" alt="План">
 								</div>
 								<div class="item-caption">
 									<div>
@@ -973,7 +987,75 @@
 
 							<div class="search-block-item">
 								<div class="item-image">
-									<img src="media/search-block/plan-01.svg">
+									<img src="media/search-block/plan-01.svg" alt="План">
+								</div>
+								<div class="item-caption">
+									<div>
+										<p>120 м²</p>
+										<p>129 913 915 ₸</p>
+									</div>
+									<div>
+										<span>3-х комнатная</span>
+										<span>2 этаж</span>
+										<span>Чистовая</span>
+									</div>
+								</div>
+							</div>
+
+							<div class="search-block-item">
+								<div class="item-image">
+									<img src="media/search-block/plan-01.svg" alt="План">
+								</div>
+								<div class="item-caption">
+									<div>
+										<p>100.6 м²</p>
+										<p>129 913 915 ₸</p>
+									</div>
+									<div>
+										<span>2-х комнатная</span>
+										<span>3 этаж</span>
+										<span>Чистовая</span>
+									</div>
+								</div>
+							</div>
+
+							<div class="search-block-item">
+								<div class="item-image">
+									<img src="media/search-block/plan-01.svg" alt="План">
+								</div>
+								<div class="item-caption">
+									<div>
+										<p>190.6 м²</p>
+										<p>129 913 915 ₸</p>
+									</div>
+									<div>
+										<span>4-х комнатная</span>
+										<span>1 этаж</span>
+										<span>Чистовая</span>
+									</div>
+								</div>
+							</div>
+
+							<div class="search-block-item">
+								<div class="item-image">
+									<img src="media/search-block/plan-01.svg" alt="План">
+								</div>
+								<div class="item-caption">
+									<div>
+										<p>164.2 м²</p>
+										<p>129 913 915 ₸</p>
+									</div>
+									<div>
+										<span>4-х комнатная</span>
+										<span>2 этаж</span>
+										<span>Чистовая</span>
+									</div>
+								</div>
+							</div>
+
+							<div class="search-block-item">
+								<div class="item-image">
+									<img src="media/search-block/plan-01.svg" alt="План">
 								</div>
 								<div class="item-caption">
 									<div>
@@ -990,84 +1072,16 @@
 
 							<div class="search-block-item">
 								<div class="item-image">
-									<img src="media/search-block/plan-01.svg">
+									<img src="media/search-block/plan-01.svg" alt="План">
 								</div>
 								<div class="item-caption">
 									<div>
-										<p>175.6 м²</p>
+										<p>250.6 м²</p>
 										<p>129 913 915 ₸</p>
 									</div>
 									<div>
-										<span>4-х комнатная</span>
-										<span>3 этаж</span>
-										<span>Чистовая</span>
-									</div>
-								</div>
-							</div>
-
-							<div class="search-block-item">
-								<div class="item-image">
-									<img src="media/search-block/plan-01.svg">
-								</div>
-								<div class="item-caption">
-									<div>
-										<p>175.6 м²</p>
-										<p>129 913 915 ₸</p>
-									</div>
-									<div>
-										<span>4-х комнатная</span>
-										<span>3 этаж</span>
-										<span>Чистовая</span>
-									</div>
-								</div>
-							</div>
-
-							<div class="search-block-item">
-								<div class="item-image">
-									<img src="media/search-block/plan-01.svg">
-								</div>
-								<div class="item-caption">
-									<div>
-										<p>175.6 м²</p>
-										<p>129 913 915 ₸</p>
-									</div>
-									<div>
-										<span>4-х комнатная</span>
-										<span>3 этаж</span>
-										<span>Чистовая</span>
-									</div>
-								</div>
-							</div>
-
-							<div class="search-block-item">
-								<div class="item-image">
-									<img src="media/search-block/plan-01.svg">
-								</div>
-								<div class="item-caption">
-									<div>
-										<p>175.6 м²</p>
-										<p>129 913 915 ₸</p>
-									</div>
-									<div>
-										<span>4-х комнатная</span>
-										<span>3 этаж</span>
-										<span>Чистовая</span>
-									</div>
-								</div>
-							</div>
-
-							<div class="search-block-item">
-								<div class="item-image">
-									<img src="media/search-block/plan-01.svg">
-								</div>
-								<div class="item-caption">
-									<div>
-										<p>175.6 м²</p>
-										<p>129 913 915 ₸</p>
-									</div>
-									<div>
-										<span>4-х комнатная</span>
-										<span>3 этаж</span>
+										<span>6 комнатная</span>
+										<span>1 этаж</span>
 										<span>Чистовая</span>
 									</div>
 								</div>
@@ -1080,15 +1094,15 @@
 					<div class="plan-image-block">
 						<div class="plan-image-item">
 							<a href="media/search-block/plan-01.svg" class="open-plan-image">
-								<img src="media/search-block/plan-01.svg">
+								<img src="media/search-block/plan-01.svg" alt="Планировка квартиры">
 							</a>
 						</div>
 						<div class="plan-image-item">
 							<div class="compas">
-								<img src="media/search-block/flat-compas.svg">
+								<img src="media/search-block/flat-compas.svg" alt="Коипас">
 							</div>
 							<a href="media/search-block/plan-01.svg" class="maximize open-plan-image">
-								<img src="media/search-block/maximize.svg" >
+								<img src="media/search-block/maximize.svg" alt="Увеличить">
 							</a>
 						</div>
 					</div>
@@ -1154,6 +1168,8 @@
 <script src="script/jquery.maskedinput.min.js"></script>
 <!-- JavaScript -->
 <script src="script/javascript.js"></script>
-
+<script defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmcpqmx7kOixVPUYfvsNAdArZG0UO0ji8&callback=initMap">
+</script>
 </body>
 </html>
