@@ -9,7 +9,7 @@
 	box-sizing: border-box
 
 html
-	overflow: hidden
+	overflow-x: hidden
 
 body
 	scroll-behavior: smooth
@@ -436,6 +436,7 @@ h1, h2, h3, h4, h5, h6
 						background-color: var(--color-brown-200)
 						@include element_animation
 						padding: 32px 32px
+						cursor: pointer
 
 						.meni__content-icon
 							width: 60px
@@ -836,7 +837,7 @@ h1, h2, h3, h4, h5, h6
 /* PROJECT STYLE SETTINGS END. */
 
 
-/* PROJECT STYLE SETTINGS START: */
+/* MAP STYLE SETTINGS START: */
 
 .section-map
 	background-color: var(--color-brown-005)
@@ -1024,7 +1025,74 @@ h1, h2, h3, h4, h5, h6
 					path
 						stroke: var(--color-dark-100)
 
-/* PROJECT STYLE SETTINGS END. */
+#map
+	width: 100%
+	height: 100%
+
+div#map a,
+div#map button,
+div.gm-bundled-control div.gmnoprint 
+	display: none !important
+
+.map-close
+	width: 56px
+	height: 56px
+	display: flex
+	justify-content: center
+	align-items: center
+	background-color: var(--color-brown-200)
+	cursor: pointer
+
+	position: absolute
+	left: -28px
+	top: 50%
+	z-index: 700
+	transform: translateY(-50%)
+	border-radius: 50%
+
+	@include element_animation
+	opacity: 0
+
+	&:hover
+		background-color: var(--color-brown-100)
+
+	&.active
+		opacity: 1
+
+.section-interactive-map
+	&.active
+		width: 100%
+		height: 100vh
+		position: fixed
+		right: 0px
+		top: 0px
+		z-index: 50
+
+		.interactive-map-container
+			.interactive-map
+				#map-full
+					transform: translateX(0%)
+
+	.interactive-map-container
+		width: 100%
+		height: 100%
+
+		.interactive-map
+			width: 100%
+			height: 100%
+
+			#map-full
+				width: 75%
+				height: 100%
+				position: fixed
+				right: 0px
+				top: 0px
+				border-left: 1px solid var(--color-brown-border)
+				transform: translateX(100%)
+				transition-duration: 0.5s
+				transition-timing-function: ease-in-out
+
+/* MAP STYLE SETTINGS END. */
 
 
 /* CALL MODAL STYLE SETTINGS START: */
@@ -2214,73 +2282,791 @@ h1, h2, h3, h4, h5, h6
 /* APARTMENT SECTION STYLE SETTINGS END. */
 
 
+/* QUESTIONS SECTION STYLE SETTINGS START: */
+
+.section-questions
+	position: relative
+
+.questions-container
+	width: 100%
+	display: flex
+	position: relative
+	z-index: 20
+
+	.questions-block
+		&:nth-child(1)
+			width: 50%
+		&:nth-child(2)
+			width: 25%
+		&:nth-child(3)
+			width: 25%
+
+	.questions-block
+		&:nth-child(1)
+			display: flex
+			justify-content: space-between
+			background-color: var(--color-gold-300)
+			padding: 40px 32px 32px 32px
+
+			h2
+				width: 65%
+				color: var(--color-brown-005)
+				font-size: 44px
+				line-height: 56px
+				text-transform: uppercase
+
+			div
+				width: 35%
+				height: 100%
+				display: flex
+				flex-direction: column
+				justify-content: space-between
+				align-items: flex-end
+				row-gap: 130px
+
+				img
+					width: 100%
+					max-width: 120px
+
+				p
+					font-size: 14px
+					line-height: 22px
+					color: var(--color-brown-005)
+					text-align: right
+
+	.questions-block
+		&:nth-child(2)
+			display: flex
+			justify-content: flex-end
+			background-color: var(--color-brown-200)
+			padding: 32px 32px 32px 32px
+
+			a.question-link
+				height: 100%
+				display: flex
+				flex-direction: column
+				justify-content: space-between
+				align-items: flex-end
+				text-decoration: none
+				cursor: pointer
+
+				div	
+					width: 60px
+					height: 60px
+					display: flex
+					justify-content: center
+					align-items: center
+					background-color: var(--color-gold-border)
+					border-radius: 50px
+
+				p
+					font-size: 14px
+					line-height: 22px
+					color: var(--color-brown-005)
+					text-align: right
+
+	.questions-block
+		&:nth-child(3)
+			display: flex
+			justify-content: flex-end
+			background-color: var(--color-dark-100)
+			padding: 32px 32px 32px 32px
+
+			a.question-link
+				height: 100%
+				display: flex
+				flex-direction: column
+				justify-content: space-between
+				align-items: flex-end
+				text-decoration: none
+
+				div	
+					width: 60px
+					height: 60px
+					display: flex
+					justify-content: center
+					align-items: center
+					background-color: var(--color-gold-border)
+					border-radius: 50px
+
+				p
+					font-size: 14px
+					line-height: 22px
+					color: var(--color-brown-005)
+					text-align: right
+
+.questions-backgrounds
+	width: 100%
+	height: 100%
+	display: flex
+	position: absolute
+	left: 0px
+	top: 0px
+	z-index: 10
+
+	div
+		&:first-child
+			width: 50%
+			height: 100%
+			background-color: var(--color-gold-300)
+		&:last-child
+			width: 50%
+			height: 100%
+			background-color: var(--color-dark-100)
+
+/* QUESTIONS SECTION STYLE SETTINGS END. */
 
 
+/* COMPANY SECTION STYLE SETTINGS START: */
 
-.section-interactive-map
-	&.active
+.section-company
+	background-color: var(--color-dark-100)
+	padding: 96px 0px
+
+.company-container
+	width: 100%
+	display: flex
+	column-gap: 20px
+
+	.company-column-01
+		width: 66%
+		position: relative
+
+	.company-column-02
+		width: 32%
+		position: relative
+
+.company-column-01
+	width: 100%
+	display: flex
+
+	.company-column-03
+		width: auto
+		flex-grow: 1
+
+	.company-column-04
+		width: auto
+
+.company-block-title
+	border-top: 1px solid var(--color-gold-border)
+	border-bottom: 1px solid var(--color-gold-border)
+	padding: 32px 0px
+	margin: 0px 0px 48px 0px
+
+	p
+		color: var(--color-gold-150)
+		font-size: 12px
+		line-height: 16px
+		letter-spacing: 0.02em
+		text-transform: uppercase
+		margin: 0px 0px 12px 0px
+
+	h2
+		color: var(--color-gold-020)
+		font-size: 52px
+		line-height: 64px
+		text-transform: uppercase
+
+.company-block-content
+	width: 100%
+	display: flex
+	column-gap: 50px
+
+	div
+		&:first-child
+			width: 56%
+
+		&:last-child
+			width: 44%
+
+	p
+		color: var(--color-gold-020)
+		font-size: 14px
+		line-height: 28px
+		margin: 0px 0px 20px 0px
+
+		&:last-child
+			margin: 0px 0px 0px 0px
+
+	a.company-button
+		background-color: var(--color-gold-020)
+		color: var(--color-dark-100)
+		font-size: 14px
+		line-height: 20px
+		text-decoration: none
+		letter-spacing: 0.01em
+		border-radius: 28px
+		padding: 17px 24px
+		cursor: pointer
+
+		display: inline-flex
+		align-items: center
+		column-gap: 12px
+
+		margin: 65px 0px 0px 0px
+
+		@include element_animation
+
+		&:hover
+			background-color: var(--color-gold-005)
+
+.company-block-content
+	div
+		&:first-child
+			img
+				width: 100%
+
+.company-column-04
+	height: 100%
+	display: flex
+	flex-direction: column
+	align-items: center
+
+	p
+		color: var(--color-gold-020)
+		font-size: 11px
+		line-height: 12px
+		text-transform: uppercase
+		transform: rotate(-90deg)
+		white-space: nowrap
+		background-color: var(--color-dark-100)
+		padding: 0px 16px
+
+	div
+		flex-grow: 1
+		width: 2px
+		background-color: var(--color-gold-border)
+
+
+.cases-slider
+	width: 100%
+	position: relative
+
+	.cases-item
 		width: 100%
-		height: 100vh
-		position: fixed
-		right: 0px
-		top: 0px
-		z-index: 50
 
-		.interactive-map-container
-			.interactive-map
-				#map-full
-					transform: translateX(0%)
+		.cases-item-image
+			width: 100%
+			height: 380px
+			position: relative
+			overflow: hidden
+			margin: 0px 0px 40px 0px
 
-	.interactive-map-container
+			img
+				width: 100%
+				height: 100%
+				position: absolute
+				left: 50%
+				top: 50%
+				transform: translate(-50%, -50%)
+				object-fit: cover
+
+		.cases-item-text
+			width: 100%
+			overflow: hidden
+
+			p
+				&:first-child
+					color: var(--color-gold-020)
+					font-size: 24px
+					line-height: 32px	
+					margin: 0px 0px 8px 0px
+
+				&:nth-child(2)
+					span
+						color: var(--color-gold-020)
+						font-size: 14px
+						line-height: 28px	
+
+						&::after
+							content: ''
+							display: inline-block
+							width: 3px
+							height: 3px
+							border-radius: 25px
+							background-color: var(--color-gold-020)
+							margin: 2px 8px
+
+						&:last-child
+								&::after
+									display: none
+
+		.cases-item-button
+			margin: 24px 0px 0px 0px
+
+			a.cases-button
+				background-color: var(--color-dark-100)
+				color: var(--color-gold-020)
+				font-size: 14px
+				line-height: 20px
+				text-decoration: none
+				letter-spacing: 0.01em
+				border-radius: 28px
+				padding: 16px 40px
+				cursor: pointer
+				border: 1px solid var(--color-gold-150)
+
+				display: inline-flex
+				align-items: center
+				column-gap: 12px
+
+				@include element_animation
+
+				&:hover
+					background-color: var(--color-gold-150)
+					color: var(--color-dark-100)
+
+.cases-navigation
+	display: flex
+	justify-content: flex-end
+	column-gap: 8px
+	position: absolute
+	right: 0px
+	bottom: 5px
+	background-color: var(--color-dark-100)
+	padding: 10px 0px 0px 10px
+	z-index: 80
+
+
+	.cases-navigation-item
+		width: 56px
+		height: 56px
+		border-radius: 50%
+		display: flex
+		justify-content: center
+		align-items: center
+		cursor: pointer
+		position: relative
+		@include element_animation
+
+		&:first-child
+			border: 1px solid var(--color-gold-150)
+			path
+				stroke: var(--color-gold-020)
+
+			&:hover
+				background-color: var(--color-gold-150)
+				path
+					stroke: var(--color-brown-300)
+
+
+		&:last-child
+			background-color: var(--color-gold-150)
+			path
+				stroke: var(--color-dark-200)
+
+			&:hover
+				background-color: var(--color-gold-200)
+
+/* COMPANY SECTION STYLE SETTINGS END. */
+
+
+/* FOOTER SECTION STYLE SETTINGS START: */
+
+.section-footer
+	background-color: var(--color-dark-100)
+	padding: 80px 0px 0px 0px
+
+.footer-container
+	.footer-row-01
+		width: 100%
+		display: flex
+		column-gap: 40px
+
+	.footer-row-02
+		width: 100%
+		display: flex
+		column-gap: 48px
+
+.footer-row-01
+	.footer-column-01
+		width: 42%
+		border-right: 1px solid var(--color-gold-border)
+		padding: 0px 40px 0px 0px
+
+	.footer-column-02
+		width: 58%
+
+.footer-block-title
+	border-top: 1px solid var(--color-gold-border)
+	border-bottom: 1px solid var(--color-gold-border)
+	padding: 32px 0px
+
+	p
+		color: var(--color-gold-150)
+		font-size: 12px
+		line-height: 16px
+		letter-spacing: 0.02em
+		text-transform: uppercase
+		margin: 0px 0px 12px 0px
+
+	h2
+		color: var(--color-gold-020)
+		font-size: 52px
+		line-height: 64px
+		text-transform: uppercase
+
+.footer-block-caption
+	padding: 32px 0px 32px 0px
+	border-bottom: 1px solid var(--color-gold-border)
+
+	p
+		&:nth-child(1)
+			color: var(--color-gold-020)
+			font-size: 11px
+			line-height: 16px
+			text-transform: uppercase
+			margin: 0px 0px 24px 0px
+
+		&:nth-child(2)
+			color: var(--color-gold-020)
+			font-size: 24px
+			line-height: 32px
+			margin: 0px 0px 12px 0px
+
+		&:nth-child(4)
+			color: var(--color-gold-020)
+			font-size: 14px
+			line-height: 28px
+
+	a
+		color: var(--color-gold-150)
+		font-size: 24px
+		line-height: 32px
+		text-decoration: none
+		display: inline-block
+		margin: 0px 0px 24px 0px
+
+.footer-block-buttons
+	display: flex
+	column-gap: 12px
+	padding: 32px 0px
+
+	a.button-networks
+		background-color: var(--color-dark-100)
+		color: var(--color-gold-020)
+		font-size: 14px
+		line-height: 20px
+		text-decoration: none
+		letter-spacing: 0.01em
+		border-radius: 50px
+		padding: 16px 20px
+		cursor: pointer
+		border: 1px solid var(--color-gold-150)
+
+		display: inline-flex
+		align-items: center
+		column-gap: 12px
+
+		@include element_animation
+
+		&:nth-child(1) svg path
+			stroke: var(--color-gold-020)
+
+		&:hover
+			background-color: var(--color-gold-150)
+			color: var(--color-dark-100)
+
+			&:nth-child(1) svg path
+				stroke: var(--color-dark-100)
+			&:nth-child(2) svg path
+				fill: var(--color-dark-100)
+			&:nth-child(3) svg path
+				stroke: var(--color-dark-100)
+
+.footer-row-02
+	border-top: 1px solid var(--color-gold-border)
+	padding: 46px 0px 32px 0px
+	margin: 40px 0px 0px 0px
+
+	div
+		&:first-child
+			p
+				color: var(--color-gold-020)
+				font-size: 8px
+				line-height: 12px
+				text-transform: uppercase
+
+		&:last-child
+			p
+				color: var(--color-gold-020)
+				font-size: 8px
+				line-height: 16px
+				text-transform: uppercase
+
+.footer-column-02
+	position: relative
+
+	#footer-map
 		width: 100%
 		height: 100%
 
-		.interactive-map
-			width: 100%
-			height: 100%
+	div#footer-map a,
+	div#footer-map button,
+	div.gm-bundled-control div.gmnoprint 
+		display: none !important
 
-			#map-full
-				width: 75%
-				height: 100%
-				position: fixed
-				right: 0px
-				top: 0px
-				border-left: 1px solid var(--color-brown-border)
-				transform: translateX(100%)
-				transition-duration: 0.5s
-				transition-timing-function: ease-in-out
+	.button-route
+		color: var(--color-brown-200)
+		background-color: var(--color-brown-005)
+		border: 1px solid var(--color-brown-200)
+		font-size: 14px
+		line-height: 20px
+		text-decoration: none
+		letter-spacing: 0.01em
+		border-radius: 36px
+		padding: 12px 16px
+		position: absolute
+		top: 24px
+		right: 24px
+		z-index: 20
+		cursor: pointer
 
-#map
+/* FOOTER SECTION STYLE SETTINGS END. */
+
+
+/* BUILD SECTION STYLE SETTINGS START: */
+
+.section-build
+	background-color: var(--color-brown-005)
+	padding: 80px 0px
+
+.build-row-01
+	.title-label
+			.label-number
+				padding: 0px 0px 0px 15px
+
+	.build-block-title
+		width: 100%
+		margin: 40px 0px
+
+		h2
+			color: var(--color-brown-200)
+			font-size: 52px
+			line-height: 64px
+
+			span
+				color: var(--color-brown-100)
+
+.build-row-02
 	width: 100%
-	height: 100%
-
-div#map a,
-div#map button,
-div.gm-bundled-control div.gmnoprint 
-	display: none !important
-
-.map-close
-	width: 56px
-	height: 56px
 	display: flex
-	justify-content: center
+	justify-content: space-between
 	align-items: center
-	background-color: var(--color-brown-200)
-	cursor: pointer
+	padding: 24px 0px
 
-	position: absolute
-	left: -28px
-	top: 50%
-	z-index: 700
-	transform: translateY(-50%)
-	border-radius: 50%
+	& > div
+		&:first-child
+			display: flex
+			column-gap: 48px
 
-	@include element_animation
-	opacity: 0
+	.input-block.buttons
+		&:first-child
+			border-right: 1px solid var(--color-brown-border)
+			padding: 0px 40px 0px 0px
 
-	&:hover
+		.button-tabs
+			display: flex
+			column-gap: 5px
+
+			a
+				border: 1px solid var(--color-brown-border)
+				background-color: transparent
+				border-radius: 25px
+				display: flex
+				justify-content: center
+				align-items: center
+				color: var(--color-brown-200)
+				font-size: 14px
+				line-height: 20px
+				text-decoration: none
+				letter-spacing: 0.01em
+				padding: 16px 20px
+
+				@include element_animation
+
+				&:hover
+					border-color: var(--color-brown-100)
+					color: var(--color-brown-100) 
+
+				&.active
+					border-color: var(--color-brown-200)
+					background-color: var(--color-brown-200)
+					color: var(--color-brown-005) 
+
+.info-label-block
+	display: flex
+	align-items: center
+	column-gap: 16px
+
+	.info-label-icon
+		width: 52px
+		height: 52px
+		display: flex
+		justify-content: center
+		align-items: center
+		border: 1px solid var(--color-brown-100)
+		border-radius: 26px
+
+	.info-label-text
+		p
+			&:first-child
+				color: var(--color-brown-200)
+				font-size: 20px
+				line-height: 26px
+				text-transform: none
+				margin: 0px 0px
+
+			&:last-child
+				color: var(--color-brown-200)
+				font-size: 14px
+				line-height: 20px
+				text-transform: none
+				margin: 0px 0px
+
+a.demostration-button
 		background-color: var(--color-brown-100)
+		color: var(--color-brown-005)
+		font-size: 14px
+		line-height: 20px
+		text-decoration: none
+		letter-spacing: 0.01em
+		border-radius: 28px
+		padding: 17px 24px
+		cursor: pointer
 
-	&.active
-		opacity: 1
+		display: inline-flex
+		align-items: center
+		column-gap: 6px
+
+		@include element_animation
+
+		&:hover
+			background-color: var(--color-brown-200)
+
+.build-row-03
+	width: 100%
+	position: relative
+	margin: 40px 0px 0px 0px
+
+
+.build-item
+	.build-item-head
+		width: 100%
+		display: flex
+		align-items: center
+		justify-content: space-between
+		column-gap: 16px
+
+		p
+			color: var(--color-brown-200)
+			font-size: 14px
+			line-height: 20px
+
+		div
+			flex-grow: 1
+			height: 1px
+			background-color: var(--color-brown-border)
+
+	.build-item-body
+		width: 100%
+		position: relative
+		border-right: 1px solid var(--color-brown-border)
+		padding: 0px 48px 0px 0px
+		margin: 48px 0px 0px 0px
+
+		.build-item-image
+			width: 100%
+			height: 530px
+			position: relative
+			overflow: hidden
+
+			img
+				width: 100%
+				height: 100%
+				position: absolute
+				left: 50%
+				top: 50%
+				transform: translate(-50%, -50%)
+				object-fit: cover
+
+		.build-item-content
+			width: 100%
+			display: flex
+			justify-content: space-between
+			align-items: center
+			margin: 20px 0px 0px 0px
+
+			.build-item-text
+				display: flex
+				column-gap: 12px
+
+				& > p
+					&:first-child
+						font-family: var(--font-family-titles)
+						color: var(--color-brown-200)
+						font-size: 36px
+						line-height: 36px
+
+				& > div p
+						color: var(--color-brown-200)
+						font-size: 11px
+						line-height: 16px
+						text-transform: uppercase
+						letter-spacing: 0.05em
+
+			.build-item-show
+				width: 52px
+				height: 52px
+				display: flex
+				justify-content: center
+				align-items: center
+				border-radius: 50px
+				border: 1px solid var(--color-brown-border)
+				cursor: pointer
+
+.build-navigation
+	display: flex
+	justify-content: flex-end
+	column-gap: 8px
+	position: absolute
+	right: 0px
+	top: -28px
+	background-color: var(--color-brown-005)
+	padding: 10px 0px 10px 20px
+	z-index: 80
+
+
+	.build-navigation-item
+		width: 56px
+		height: 56px
+		border-radius: 50%
+		display: flex
+		justify-content: center
+		align-items: center
+		cursor: pointer
+		position: relative
+		@include element_animation
+
+		&:first-child
+			border: 1px solid var(--color-brown-border)
+			path
+				stroke: var(--color-brown-100)
+
+			&:hover
+				background-color: var(--color-brown-200)
+				path
+					stroke: var(--color-brown-005)
+
+
+		&:last-child
+			background-color: var(--color-brown-100)
+			path
+				stroke: var(--color-brown-005)
+
+			&:hover
+				background-color: var(--color-brown-200)
+
+/* BUILD SECTION STYLE SETTINGS END. */
+
 

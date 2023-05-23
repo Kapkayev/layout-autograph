@@ -69,7 +69,6 @@ jQuery(document).ready(function(){
             url: "./mail.php",
             data: th.serialize()
         }).done(function() {
-        	alert('Заявка успешно отправлена!');
         	showSuccesfullMessageModal();
             setTimeout(function() {
                 th.trigger("reset");
@@ -85,7 +84,6 @@ jQuery(document).ready(function(){
             url: "./mail.php",
             data: th.serialize()
         }).done(function() {
-        	alert('Заявка успешно отправлена!');
         	showSuccesfullMessageSection();
             setTimeout(function() {
                 th.trigger("reset");
@@ -422,14 +420,201 @@ jQuery("img.img-svg").each(function () {
 		mainClass: 'mfp-no-margins mfp-with-zoom plan-modal'
 	});
 
-	const apartmentArray = jQuery('.search-block-item');
-	console.log(apartmentArray)
+	// const apartmentArray = jQuery('.search-block-item');
+	// console.log(apartmentArray)
 
 /*--------------------------------------------------------------
 >>> APARTMENT SECTION CODE END.
 --------------------------------------------------------------*/
 
+
+/*--------------------------------------------------------------
+>>> COMPANY SECTION CODE START:
+--------------------------------------------------------------*/
+
+jQuery('.cases-slider').owlCarousel({
+	    loop: true,
+	    touchDrag: true,
+	    mouseDrag: true,
+	    nav: false,
+	    dots: false,
+	    autoWidth: false,
+	    autoHeight: false,
+	    autoplay: false,
+	    items:1,
+	    smartSpeed: 200,
+	    autoplay: false,
+	})
+
+	let owlCasesSlider = jQuery('.cases-slider');
+	owlCasesSlider.owlCarousel();
+
+	jQuery('#cases-prev').click(function() {
+	    owlCasesSlider.trigger('prev.owl.carousel', [300]);
+	})
+
+	jQuery('#cases-next').click(function() {
+	    owlCasesSlider.trigger('next.owl.carousel');
+	})
+
+/*--------------------------------------------------------------
+>>> COMPANY SECTION CODE END.
+--------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------
+>>> BUILDS SECTION CODE START:
+--------------------------------------------------------------*/
+
+	jQuery(".build-row-03 > div").hide();
+	jQuery(".button-tabs a:first").attr("class","active");
+	jQuery(".build-row-03 div:first").fadeIn();
+
+	jQuery(".info-label-block").hide();
+	jQuery(".info-label-block:first").fadeIn();
+
+	jQuery('.button-tabs a').click(function(e) {
+	    e.preventDefault();        
+	    jQuery(".build-row-03 > div").hide();
+	    jQuery(".button-tabs a").attr("class","");
+	    jQuery(this).attr("class","active");
+	    jQuery('#' + jQuery(this).attr('name')).fadeIn();
+	});
+
+	jQuery('a[name="tab-01"]').click(function(){
+		jQuery(".info-label-block").hide();
+		jQuery(".info-label-block:nth-child(1)").fadeIn();
+	})
+
+	jQuery('a[name="tab-02"]').click(function(){
+		jQuery(".info-label-block").hide();
+		jQuery(".info-label-block:nth-child(2)").fadeIn();
+	})
+
+	jQuery('a[name="tab-03"]').click(function(){
+		jQuery(".info-label-block").hide();
+		jQuery(".info-label-block:nth-child(3").fadeIn();
+	})
+
+	jQuery('.build-slider-01').owlCarousel({
+	    loop: true,
+	    touchDrag: true,
+	    mouseDrag: true,
+	    nav: false,
+	    dots: false,
+	    autoWidth: false,
+	    autoHeight: false,
+	    autoplay: false,
+	    items:3,
+	    smartSpeed: 200,
+	    autoplay: false,
+	    margin: 48
+	})
+
+	let owlBuildSlider_01 = jQuery('.build-slider-01');
+	owlBuildSlider_01.owlCarousel();
+
+	jQuery('#build-prev-01').click(function() {
+	    owlBuildSlider_01.trigger('prev.owl.carousel', [300]);
+	})
+
+	jQuery('#build-next-01').click(function() {
+	    owlBuildSlider_01.trigger('next.owl.carousel');
+	})
+
+	jQuery('.build-slider-02').owlCarousel({
+	    loop: true,
+	    touchDrag: true,
+	    mouseDrag: true,
+	    nav: false,
+	    dots: false,
+	    autoWidth: false,
+	    autoHeight: false,
+	    autoplay: false,
+	    items:3,
+	    smartSpeed: 200,
+	    autoplay: false,
+	    margin: 48
+	})
+
+	let owlBuildSlider_02 = jQuery('.build-slider-02');
+	owlBuildSlider_02.owlCarousel();
+
+	jQuery('#build-prev-02').click(function() {
+	    owlBuildSlider_02.trigger('prev.owl.carousel', [300]);
+	})
+
+	jQuery('#build-next-02').click(function() {
+	    owlBuildSlider_02.trigger('next.owl.carousel');
+	})
+
+	jQuery('.build-slider-03').owlCarousel({
+	    loop: true,
+	    touchDrag: true,
+	    mouseDrag: true,
+	    nav: false,
+	    dots: false,
+	    autoWidth: false,
+	    autoHeight: false,
+	    autoplay: false,
+	    items:3,
+	    smartSpeed: 200,
+	    autoplay: false,
+	    margin: 48
+	})
+
+	let owlBuildSlider_03 = jQuery('.build-slider-03');
+	owlBuildSlider_03.owlCarousel();
+
+	jQuery('#build-prev-03').click(function() {
+	    owlBuildSlider_03.trigger('prev.owl.carousel', [300]);
+	})
+
+	jQuery('#build-next-03').click(function() {
+	    owlBuildSlider_03.trigger('next.owl.carousel');
+	})
+
+	jQuery('.build-item-show').magnificPopup({
+		type: 'image',
+		closeOnContentClick: true,
+		mainClass: 'mfp-no-margins mfp-with-zoom build-modal'
+	});
+
+
+/*--------------------------------------------------------------
+>>> BUILS SECTION CODE END.
+--------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------
+>>> LINKS CODE START:
+--------------------------------------------------------------*/
+
+	jQuery('.section-header a[href*="#"], .section-menu a[href*="#"], .section-questions a[href*="#"]').on("click", function(e){
+
+		jQuery('.section-menu').css('transform','translateX(-100%)');
+        jQuery('html').css('overflowY', 'auto')
+
+	    let anchor = jQuery(this);
+        jQuery('html, body').stop().animate({
+            scrollTop: jQuery(anchor.attr('href')).offset().top
+        }, 990);
+        e.preventDefault();
+	    return false;
+
+	});
+
+/*--------------------------------------------------------------
+>>> LINKS CODE END.
+--------------------------------------------------------------*/
+
 });
+
+
+
+
+
+
 
 /*--------------------------------------------------------------
 >>> SERVICE BUTTONS CODE START:
@@ -472,6 +657,286 @@ function initMap() {
 	const kokTobePosition = { lat: 43.23403437196063, lng: 76.9759018643498 };
 	const dostykPosition = { lat: 43.233386112599, lng: 76.95671318922655};
 	const colibriPosition = { lat: 43.23982305260296, lng: 76.95518730577388};
+
+	const office = { lat: 43.20186368926617, lng: 76.84801294310257}
+
+	const mapFooter = new google.maps.Map(document.getElementById("footer-map"), {
+		center: office,
+		zoom: 15,
+		styles: 
+			[
+			    {
+			        "featureType": "administrative",
+			        "elementType": "all",
+			        "stylers": [
+			            {
+			                "visibility": "off"
+			            }
+			        ]
+			    },
+			    {
+			        "featureType": "landscape",
+			        "elementType": "geometry.fill",
+			        "stylers": [
+			            {
+			                "color": "#E0DCD5"
+			            }
+			        ]
+			    },
+			    {
+			        "featureType": "landscape",
+			        "elementType": "geometry.stroke",
+			        "stylers": [
+			            {
+			                "color": "#d7bcb3"
+			            }
+			        ]
+			    },
+			    {
+			        "featureType": "landscape",
+			        "elementType": "labels.text.fill",
+			        "stylers": [
+			            {
+			                "color": "#704a3c"
+			            }
+			        ]
+			    },
+			    {
+			        "featureType": "landscape",
+			        "elementType": "labels.text.stroke",
+			        "stylers": [
+			            {
+			                "visibility": "off"
+			            }
+			        ]
+			    },
+			    {
+			        "featureType": "landscape",
+			        "elementType": "labels.icon",
+			        "stylers": [
+			            {
+			                "color": "#704a3c"
+			            }
+			        ]
+			    },
+			    {
+			        "featureType": "landscape.natural",
+			        "elementType": "all",
+			        "stylers": [
+			        	{
+			                "visibility": "on"
+			            },
+			            {
+			                "color": "#C8CFC5"
+			            }
+			        ]
+			    },
+			    {
+			        "featureType": "landscape.natural.landcover",
+			        "elementType": "all",
+			        "stylers": [
+			            {
+			                "visibility": "on"
+			            },
+			            {
+			                "color": "#c1cfba"
+			            }
+			        ]
+			    },
+			    {
+			        "featureType": "landscape.natural.terrain",
+			        "elementType": "all",
+			        "stylers": [
+			            {
+			                "color": "#9cad93"
+			            },
+			            {
+			                "visibility": "on"
+			            }
+			        ]
+			    },
+			    {
+			        "featureType": "poi",
+			        "elementType": "all",
+			        "stylers": [
+			            {
+			                "visibility": "off"
+			            }
+			        ]
+			    },
+			    {
+			        "featureType": "road.highway",
+			        "elementType": "geometry.fill",
+			        "stylers": [
+			            {
+			                "color": "#d9c2b7"
+			            }
+			        ]
+			    },
+			    {
+			        "featureType": "road.highway",
+			        "elementType": "geometry.stroke",
+			        "stylers": [
+			            {
+			                "color": "#bf9d91"
+			            }
+			        ]
+			    },
+			    {
+			        "featureType": "road.highway",
+			        "elementType": "labels",
+			        "stylers": [
+			            {
+			                "visibility": "off"
+			            }
+			        ]
+			    },
+			    {
+			        "featureType": "road.highway",
+			        "elementType": "labels.text.fill",
+			        "stylers": [
+			            {
+			                "color": "#704a3c"
+			            }
+			        ]
+			    },
+			    {
+			        "featureType": "road.highway",
+			        "elementType": "labels.text.stroke",
+			        "stylers": [
+			            {
+			                "visibility": "off"
+			            }
+			        ]
+			    },
+			    {
+			        "featureType": "road.highway",
+			        "elementType": "labels.icon",
+			        "stylers": [
+			            {
+			                "visibility": "off"
+			            },
+			            {
+			                "hue": "#ff0000"
+			            }
+			        ]
+			    },
+			    {
+			        "featureType": "road.arterial",
+			        "elementType": "geometry.fill",
+			        "stylers": [
+			            {
+			                "color": "#d9c2b7"
+			            }
+			        ]
+			    },
+			    {
+			        "featureType": "road.arterial",
+			        "elementType": "geometry.stroke",
+			        "stylers": [
+			            {
+			                "color": "#bf9d91"
+			            }
+			        ]
+			    },
+			    {
+			        "featureType": "road.arterial",
+			        "elementType": "labels.text.fill",
+			        "stylers": [
+			            {
+			                "color": "#704a3c"
+			            }
+			        ]
+			    },
+			    {
+			        "featureType": "road.arterial",
+			        "elementType": "labels.text.stroke",
+			        "stylers": [
+			            {
+			                "visibility": "off"
+			            }
+			        ]
+			    },
+			    {
+			        "featureType": "road.arterial",
+			        "elementType": "labels.icon",
+			        "stylers": [
+			            {
+			                "visibility": "off"
+			            },
+			            {
+			                "hue": "#ff0000"
+			            }
+			        ]
+			    },
+			    {
+			        "featureType": "road.local",
+			        "elementType": "geometry.fill",
+			        "stylers": [
+			            {
+			                "color": "#d9c2b7"
+			            }
+			        ]
+			    },
+			    {
+			        "featureType": "road.local",
+			        "elementType": "geometry.stroke",
+			        "stylers": [
+			            {
+			                "color": "#bf9d91"
+			            },
+			            {
+			                "visibility": "off"
+			            }
+			        ]
+			    },
+			    {
+			        "featureType": "road.local",
+			        "elementType": "labels.text.fill",
+			        "stylers": [
+			            {
+			                "color": "#704a3c"
+			            }
+			        ]
+			    },
+			    {
+			        "featureType": "road.local",
+			        "elementType": "labels.text.stroke",
+			        "stylers": [
+			            {
+			                "visibility": "off"
+			            }
+			        ]
+			    },
+			    {
+			        "featureType": "road.local",
+			        "elementType": "labels.icon",
+			        "stylers": [
+			            {
+			                "color": "#704a3c"
+			            }
+			        ]
+			    },
+			    {
+			        "featureType": "transit",
+			        "elementType": "all",
+			        "stylers": [
+			            {
+			                "visibility": "off"
+			            }
+			        ]
+			    },
+			    {
+			        "featureType": "water",
+			        "elementType": "all",
+			        "stylers": [
+			            {
+			                "color": "#adc2cb"
+			            }
+			        ]
+			    }
+			]
+	});
 
 	const map = new google.maps.Map(document.getElementById("map"), {
 		center: theatrePosition,
@@ -761,6 +1226,8 @@ function initMap() {
 	const dostykIcon = 'media/map/icon_08.svg';
 	const colibriIcon = 'media/map/icon_09.svg';
 
+	const officeIcon = 'media/map/icon_10.svg';
+
 	const marker = new google.maps.Marker({
 		position: homePosition,
 		map: map,
@@ -813,6 +1280,12 @@ function initMap() {
 		position: colibriPosition,
 		map: map,
 		icon: colibriIcon,
+	});
+
+	const marker_10 = new google.maps.Marker({
+		position: office,
+		map: mapFooter,
+		icon: officeIcon,
 	});
 
 }
