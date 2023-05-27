@@ -13,7 +13,7 @@ jQuery(window).on('load', function () {
 		jQuery('html').css('overflowY', 'auto')
 	}, 3700)
 		
-  })
+ })
 
 /*--------------------------------------------------------------
 >>>  PRELOADER CODE END.
@@ -61,7 +61,6 @@ jQuery(document).ready(function(){
 		jQuery('.form-block-02').css('display','block');
 	}
 
-
 	jQuery(".call-form").submit(function() {
         var th = jQuery(this);
         jQuery.ajax({
@@ -103,7 +102,6 @@ jQuery(document).ready(function(){
 --------------------------------------------------------------*/
 
 	jQuery(window).scroll(function() {
-
 		if (jQuery(this).scrollTop() >= 800) {
 			jQuery(".header-menu-full").addClass("sticky");
 		} else {
@@ -181,7 +179,6 @@ jQuery(document).ready(function(){
 	    jQuery(this).attr('disabled', 'disabled')
 	});
 
-
 	jQuery('.map-slider').owlCarousel({
 	    loop: true,
 	    touchDrag: true,
@@ -197,11 +194,11 @@ jQuery(document).ready(function(){
 	let owlMapSliderSlider = jQuery('.map-slider');
 	owlMapSliderSlider.owlCarousel();
 
-	jQuery('#map-slider-prev').click(function() {
+	jQuery('#map-slider-prev, #map-mini-slider-prev').click(function() {
 	    owlMapSliderSlider.trigger('prev.owl.carousel', [300]);
 	})
 
-	jQuery('#map-slider-next').click(function() {
+	jQuery('#map-slider-next, map-mini-slider-next').click(function() {
 	    owlMapSliderSlider.trigger('next.owl.carousel');
 	})
 
@@ -218,19 +215,19 @@ jQuery(document).ready(function(){
 	let sectionHeightHeader = jQuery('.section-header').height();
 	let sectionHeightProject = jQuery('.section-project').height();
 	let sectionHeightMap = jQuery('.section-map').height();
-	let sectiontInformationMap = jQuery('.section-information').height();
+	let sectiontInformation = jQuery('.section-information').height();
 
 	let heightToMap = sectionHeightHeader + sectionHeightProject + (sectionHeightMap / 4);
 
 	jQuery(window).scroll(function() {
 		if (jQuery(this).scrollTop() >= heightToMap) {
-			jQuery(".map-row-03").addClass("map-block-parallax");
+			jQuery(".section-map .map-row-03").addClass("map-block-parallax");
 		} else {
-			jQuery(".map-row-03").removeClass("map-block-parallax");
+			jQuery(".section-map .map-row-03").removeClass("map-block-parallax");
 		}
 	});
 
-	let heightToInformation = sectionHeightHeader + sectionHeightProject + sectionHeightMap + (sectiontInformationMap / 3);
+	let heightToInformation = sectionHeightHeader + sectionHeightProject + sectionHeightMap + (sectiontInformation / 3);
 
 	jQuery(window).scroll(function() {
 		if (jQuery(this).scrollTop() >= heightToInformation) {
@@ -253,41 +250,49 @@ jQuery(document).ready(function(){
 jQuery('.button-call').click(function(){
 	jQuery('.section-call').css('display','block');
 	jQuery('html').css('overflow', 'hidden')
-
 	setTimeout(function(){
 		jQuery(".call-background-01").addClass("active");
 		jQuery(".call-block").addClass("active");
 	}, 400)
-
 	setTimeout(function(){
 		jQuery(".call-background-02").addClass("active");
 	}, 1100)
-
 	setTimeout(function(){
 		jQuery(".call-close").addClass("active");
 	}, 1400)
 })
 
-jQuery('.call-close').click(function(){
-
+jQuery('.call-close, .call-close-mobile').click(function(){
 	setTimeout(function(){
 		jQuery(".call-close").removeClass("active");
 	}, 200)
-
 	setTimeout(function(){
 		jQuery(".call-background-01").removeClass("active");
 		jQuery(".call-block").removeClass("active");
 	}, 400)
-
 	setTimeout(function(){
 		jQuery(".call-background-02").removeClass("active");
 	}, 800)
-
 	setTimeout(function(){
 		jQuery('.section-call').css('display','none');
 		jQuery('html').css('overflowY', 'auto')
 	}, 1200)
 })
+
+jQuery('.call-close-mobile').click(function(){
+	setTimeout(function(){
+		jQuery(".call-background-01").removeClass("active");
+		jQuery(".call-block").removeClass("active");
+	}, 400)
+	setTimeout(function(){
+		jQuery(".call-background-02").removeClass("active");
+	}, 800)
+	setTimeout(function(){
+		jQuery('.section-call').css('display','none');
+		jQuery('html').css('overflowY', 'auto')
+	}, 1200)
+})
+
 
 /*--------------------------------------------------------------
 >>> CALL MODAL CODE END.
@@ -323,6 +328,33 @@ jQuery("img.img-svg").each(function () {
 /*--------------------------------------------------------------
 >>> SERVICE SLIDER CODE START:
 --------------------------------------------------------------*/
+
+	jQuery('.service-slider-buttons').owlCarousel({
+	    loop: false,
+	    touchDrag: true,
+	    mouseDrag: true,
+	    nav: false,
+	    dots: false,
+	    autoWidth: false,
+	    autoHeight: false,
+	    autoplay: false,
+	    items:5,
+	    smartSpeed: 200,
+	    URLhashListener:true,
+	    startPosition: 'URLHash',
+	    autoplay: false,
+	    responsive:{
+	        0:{
+	            items: 5
+	        },
+	        500:{
+	            items: 7
+	        }
+	    }
+	})
+
+	let owlServiceButtonsSlider = jQuery('.service-slider-buttons');
+	owlServiceButtonsSlider.owlCarousel();
 
 	jQuery('.service-slider').owlCarousel({
 	    loop: false,
@@ -412,7 +444,14 @@ jQuery("img.img-svg").each(function () {
 	    nodes[handle].innerHTML = `${values[handle].slice(0, -1)} м²`;
 	});
 
-	customSelect('select');
+	function selectButton(elem){
+		jQuery('label.room').removeClass('selected');
+		jQuery(elem).addClass('selected'); 
+	}
+
+	jQuery('label.room').click(function(){
+		selectButton(this)
+	})
 
 	jQuery('.open-plan-image').magnificPopup({
 		type: 'image',
@@ -420,8 +459,184 @@ jQuery("img.img-svg").each(function () {
 		mainClass: 'mfp-no-margins mfp-with-zoom plan-modal'
 	});
 
-	// const apartmentArray = jQuery('.search-block-item');
-	// console.log(apartmentArray)
+	customSelect('.block-select select');
+	customSelect('.floor-select select');
+
+	const filterElements = document.querySelectorAll('.search-block-item');
+	const filterElementsCounter = document.querySelector('.search-element-counter');
+
+	const blockSelectElement =  document.querySelector('.block-select select').customSelect;
+	const floorSelectElement =  document.querySelector('.floor-select select').customSelect;
+	const roomRadioElements =  document.querySelector('.radio-group');
+
+	let minValue;
+	let maxValue;
+
+	function setDefaultValue(){
+		console.log('Default')
+
+
+		blockSelectElement.value = 1;
+		floorSelectElement.value = 0;
+
+		const radioInputButtons = document.querySelectorAll('input[name="rooms"]');
+		const firstRadioInputButton = radioInputButtons[0]
+		const radioLabelButtons = document.querySelectorAll('label.room');
+		const firstRadioLabelButton = radioLabelButtons[0]
+
+		jQuery('input[name="rooms"]:checked').removeAttr('checked');
+		selectButton(firstRadioLabelButton);
+		firstRadioInputButton.checked = true;
+
+		range.noUiSlider.reset();
+
+		getData();
+	}
+
+	function getValueOfBlock(){
+		const blockSelectValue = blockSelectElement.value;
+		return blockSelectValue;
+	}
+
+	function getValueOfFloor(){
+		const floorSelectValue = floorSelectElement.value;
+		return floorSelectValue;
+	}
+
+	function getValueOfRoom(){
+		const roomRadioValue = $('input[name="rooms"]:checked').val();
+		return roomRadioValue;
+	}
+
+	function getData(){
+		const blockSelectValue = getValueOfBlock();
+		const floorSelectValue = getValueOfFloor();
+		const roomRadioValue = getValueOfRoom();
+
+		filterElements.forEach(elem => {
+
+			const elemBlock = Number(elem.querySelector('#block').innerHTML.split('Блок')[1]);
+			const elemFloor = Number(elem.querySelector('#floor').innerHTML.split('')[0]);
+			const elemRooms = Number(elem.querySelector('#room').innerHTML.split('')[0]);
+			const elemArea  = Number(elem.querySelector('#area').innerHTML.split('м')[0])
+
+			const equalBlock = (blockSelectValue == elemBlock);
+			const equalFloor = (floorSelectValue == 0) || (floorSelectValue == elemFloor)
+			const equalRooms = (roomRadioValue == 0) || (roomRadioValue == elemRooms)
+			const equalArea  =  (elemArea <= maxValue) && (elemArea >=  minValue)
+
+			if (!(equalBlock && equalFloor && equalRooms && equalArea)) {
+				elem.classList.add('hidden');
+				elem.classList.remove('active');
+			} else {
+				elem.classList.remove('hidden');
+				elem.classList.add('active')
+			}
+
+		})
+
+		let filterElementsActive = document.querySelectorAll('.search-block-item.active');
+		filterElementsCounter.textContent = filterElementsActive.length;
+
+		addActiveClassAfterRender();
+	}
+
+	jQuery('.block-select .custom-select-option').click(function(){
+		setTimeout(getData, 100)
+	})
+
+	jQuery('.floor-select .custom-select-option').click(function(){
+		setTimeout(getData, 100)
+	})
+
+	roomRadioElements.addEventListener('click', () => { 
+		getData()
+	});
+
+	range.noUiSlider.on('update', function (values) {
+		minValue = values[0];
+		maxValue = values[1];
+
+		getData()
+	});
+
+	function addActiveClassAfterRender(){
+		const filterElementsActive = document.querySelectorAll('.search-block-item.active');
+
+		if (!filterElementsActive.length) {
+			jQuery('.plan-image-item').hide();
+			return;
+		} else {
+			jQuery('.plan-image-item').show();
+		}
+
+		const firstElementAfterRender = filterElementsActive[0];
+		const itemImage = firstElementAfterRender.querySelector('.item-image img').getAttribute('src');
+
+		jQuery('.full-plan-01').attr('href', itemImage);
+		jQuery('.full-plan-02').attr('href', itemImage);
+		jQuery('.full-plan-01').find('img').attr('src', itemImage);
+
+		jQuery('.search-block-item').removeClass('selected-item');
+		firstElementAfterRender.classList.add('selected-item');
+	}
+
+	function addActiveClassAfterClick(elem){
+		jQuery('.search-block-item').removeClass('selected-item');
+		jQuery(elem).addClass('selected-item');
+
+		const itemImage = elem.querySelector('.item-image img').getAttribute('src');
+
+		jQuery('.full-plan-01').attr('href', itemImage);
+		jQuery('.full-plan-02').attr('href', itemImage);
+		jQuery('.full-plan-01').find('img').attr('src', itemImage);
+	}
+
+	jQuery('.search-block-item').click(function(){
+		addActiveClassAfterClick(this);
+	})
+
+	if(jQuery(window).width() < 500){
+		const selectFloor = jQuery('.input-block.floor-select');
+		const buttonsRoom = jQuery('.input-block.buttons');
+		const range = jQuery('.input-block.range');
+
+		selectFloor.detach();
+		buttonsRoom.detach();
+		range.detach();
+
+		jQuery(selectFloor).appendTo('.filter-floor')
+		jQuery(buttonsRoom).appendTo('.filter-buttons')
+		jQuery(range).appendTo('.filter-range')
+	}
+
+	jQuery('.filter-open').click(function(){
+        jQuery('.section-filters').css('transform','translateX(0)');
+
+        setTimeout(function(){
+			jQuery('html').css('overflow', 'hidden')
+        }, 300)
+
+        setTimeout(function(){
+			jQuery(".filters-close").addClass("active");
+		}, 400)
+    })
+
+    jQuery('.filters-close, .filter-close-button').click(function(){
+    	jQuery(".filters-close").removeClass("active");
+
+    	setTimeout(function(){
+			jQuery('.section-filters').css('transform','translateX(100%)');
+		}, 300)
+
+		setTimeout(function(){
+			jQuery('html').css('overflowY', 'auto')
+		}, 400)
+    })
+
+    jQuery('.filter-reset-button').click(function(){
+    	setDefaultValue();
+    })
 
 /*--------------------------------------------------------------
 >>> APARTMENT SECTION CODE END.
@@ -444,6 +659,7 @@ jQuery('.cases-slider').owlCarousel({
 	    items:1,
 	    smartSpeed: 200,
 	    autoplay: false,
+	    margin: 10
 	})
 
 	let owlCasesSlider = jQuery('.cases-slider');
@@ -466,35 +682,92 @@ jQuery('.cases-slider').owlCarousel({
 >>> BUILDS SECTION CODE START:
 --------------------------------------------------------------*/
 
-	jQuery(".build-row-03 > div").hide();
-	jQuery(".button-tabs a:first").attr("class","active");
-	jQuery(".build-row-03 div:first").fadeIn();
 
-	jQuery(".info-label-block").hide();
-	jQuery(".info-label-block:first").fadeIn();
+	customSelect('.order-select select');
 
-	jQuery('.button-tabs a').click(function(e) {
-	    e.preventDefault();        
-	    jQuery(".build-row-03 > div").hide();
-	    jQuery(".button-tabs a").attr("class","");
-	    jQuery(this).attr("class","active");
-	    jQuery('#' + jQuery(this).attr('name')).fadeIn();
-	});
+	if(jQuery(window).width() < 705){
+		jQuery(".build-row-03 > div").hide();
+		// jQuery(".info-label-block").hide();
 
-	jQuery('a[name="tab-01"]').click(function(){
+		setTimeout(getOrder, 200)
+
+		jQuery('.order-select .custom-select-option').click(function(){
+			setTimeout(getOrder, 300)
+		})
+
+		function getOrder(){
+			const orderSelectElement =  document.querySelector('.order-select select').customSelect;
+			const orderSelectValue = orderSelectElement.value;
+			showTab(orderSelectValue);
+		}
+
+		function showTab(num){
+			switch(Number(num)) {
+				case 1:
+					jQuery(".build-row-03 > div").hide();
+					jQuery(".info-label-block").hide();
+					jQuery("#tab-block-01").fadeIn();
+					jQuery('#tab-01').fadeIn();
+
+					break;
+
+				case 2:
+					jQuery(".build-row-03 > div").hide();
+					jQuery(".info-label-block").hide();
+					jQuery("#tab-block-02").fadeIn();
+					jQuery('#tab-02').fadeIn();
+
+					break;
+
+				case 3:
+					jQuery(".build-row-03 > div").hide();
+					jQuery(".info-label-block").hide();
+					jQuery("#tab-block-03").fadeIn();
+					jQuery('#tab-03').fadeIn();
+
+					break;
+
+				default:
+	    			jQuery(".info-label-block").hide();
+					jQuery(".info-label-block:nth-child(1)").fadeIn();
+					jQuery("#tab-block-01").fadeIn();
+					jQuery('#tab-01').fadeIn();
+			}
+		}
+
+	} else {
+		jQuery(".build-row-03 > div").hide();
+		jQuery(".button-tabs a:first").attr("class","active");
+		jQuery(".build-row-03 div:first").fadeIn();
+
 		jQuery(".info-label-block").hide();
-		jQuery(".info-label-block:nth-child(1)").fadeIn();
-	})
+		jQuery(".info-label-block:first").fadeIn();
 
-	jQuery('a[name="tab-02"]').click(function(){
-		jQuery(".info-label-block").hide();
-		jQuery(".info-label-block:nth-child(2)").fadeIn();
-	})
+		jQuery('.button-tabs a').click(function(e) {
+		    e.preventDefault();        
+		    jQuery(".build-row-03 > div").hide();
+		    jQuery(".button-tabs a").attr("class","");
+		    jQuery(this).attr("class","active");
+		    jQuery('#' + jQuery(this).attr('name')).fadeIn();
+		});
 
-	jQuery('a[name="tab-03"]').click(function(){
-		jQuery(".info-label-block").hide();
-		jQuery(".info-label-block:nth-child(3").fadeIn();
-	})
+		jQuery('a[name="tab-01"]').click(function(){
+			jQuery(".info-label-block").hide();
+			jQuery(".info-label-block:nth-child(1)").fadeIn();
+		})
+
+		jQuery('a[name="tab-02"]').click(function(){
+			jQuery(".info-label-block").hide();
+			jQuery(".info-label-block:nth-child(2)").fadeIn();
+		})
+
+		jQuery('a[name="tab-03"]').click(function(){
+			jQuery(".info-label-block").hide();
+			jQuery(".info-label-block:nth-child(3").fadeIn();
+		})
+	}
+
+	// Slider #1
 
 	jQuery('.build-slider-01').owlCarousel({
 	    loop: true,
@@ -508,7 +781,19 @@ jQuery('.cases-slider').owlCarousel({
 	    items:3,
 	    smartSpeed: 200,
 	    autoplay: false,
-	    margin: 48
+	    margin: 48,
+	    responsive:{
+	        0:{
+	            items: 1
+	        },
+	        500:{
+	            items: 2,
+	            margin: 30,
+	        },
+	        701:{
+	        	items: 3
+	        }
+	    }
 	})
 
 	let owlBuildSlider_01 = jQuery('.build-slider-01');
@@ -522,6 +807,8 @@ jQuery('.cases-slider').owlCarousel({
 	    owlBuildSlider_01.trigger('next.owl.carousel');
 	})
 
+	// Slider #2
+
 	jQuery('.build-slider-02').owlCarousel({
 	    loop: true,
 	    touchDrag: true,
@@ -534,7 +821,19 @@ jQuery('.cases-slider').owlCarousel({
 	    items:3,
 	    smartSpeed: 200,
 	    autoplay: false,
-	    margin: 48
+	    margin: 48,
+	    responsive:{
+	        0:{
+	            items: 1
+	        },
+	        500:{
+	            items: 2,
+	            margin: 30,
+	        },
+	        701:{
+	        	items: 3
+	        }
+	    }
 	})
 
 	let owlBuildSlider_02 = jQuery('.build-slider-02');
@@ -548,6 +847,8 @@ jQuery('.cases-slider').owlCarousel({
 	    owlBuildSlider_02.trigger('next.owl.carousel');
 	})
 
+	// Slider #3
+
 	jQuery('.build-slider-03').owlCarousel({
 	    loop: true,
 	    touchDrag: true,
@@ -560,7 +861,19 @@ jQuery('.cases-slider').owlCarousel({
 	    items:3,
 	    smartSpeed: 200,
 	    autoplay: false,
-	    margin: 48
+	    margin: 48,
+	    responsive:{
+	        0:{
+	            items: 1
+	        },
+	        500:{
+	            items: 2,
+	            margin: 30,
+	        },
+	        701:{
+	        	items: 3
+	        }
+	    }
 	})
 
 	let owlBuildSlider_03 = jQuery('.build-slider-03');
@@ -612,10 +925,6 @@ jQuery('.cases-slider').owlCarousel({
 
 
 
-
-
-
-
 /*--------------------------------------------------------------
 >>> SERVICE BUTTONS CODE START:
 --------------------------------------------------------------*/
@@ -648,17 +957,16 @@ let map;
 
 function initMap() {
 
-	const homePosition = { lat: 43.208779, lng: 76.960729};
-	const royalPosition = { lat: 43.203317018161705, lng: 76.97778167704082 };
-	const gardenPosition = { lat: 43.21851563148002, lng: 76.91503194240826 };
-	const mallPosition = { lat: 43.21822141072604, lng:76.9283651948656 };
-	const theatrePosition = { lat: 43.226593916549426, lng: 76.94677567486151 };
-	const terenkurPosition = { lat: 43.22317746947206, lng: 76.96757846513376 };
-	const kokTobePosition = { lat: 43.23403437196063, lng: 76.9759018643498 };
-	const dostykPosition = { lat: 43.233386112599, lng: 76.95671318922655};
-	const colibriPosition = { lat: 43.23982305260296, lng: 76.95518730577388};
-
-	const office = { lat: 43.20186368926617, lng: 76.84801294310257}
+	const homePosition     = { lat: 43.208779, 			lng: 76.960729};
+	const royalPosition    = { lat: 43.203317018161705, lng: 76.97778167704082 };
+	const gardenPosition   = { lat: 43.21851563148002,  lng: 76.91503194240826 };
+	const mallPosition     = { lat: 43.21822141072604,  lng:76.9283651948656 };
+	const theatrePosition  = { lat: 43.226593916549426, lng: 76.94677567486151 };
+	const terenkurPosition = { lat: 43.22317746947206,  lng: 76.96757846513376 };
+	const kokTobePosition  = { lat: 43.23403437196063,  lng: 76.9759018643498 };
+	const dostykPosition   = { lat: 43.233386112599,    lng: 76.95671318922655};
+	const colibriPosition  = { lat: 43.23982305260296,  lng: 76.95518730577388};
+	const office 		   = { lat: 43.20186368926617,  lng: 76.84801294310257}
 
 	const mapFooter = new google.maps.Map(document.getElementById("footer-map"), {
 		center: office,
@@ -1216,15 +1524,15 @@ function initMap() {
 			]
 	});
 
-	const homeIcon =  'media/map/icon_01.svg';
-	const royalIcon =  'media/map/icon_02.svg';
-	const gardenIcon =  'media/map/icon_03.svg';
-	const mallIcon = 'media/map/icon_04.svg';
-	const theatreIcon = 'media/map/icon_05.svg';
+	const homeIcon     = 'media/map/icon_01.svg';
+	const royalIcon    = 'media/map/icon_02.svg';
+	const gardenIcon   = 'media/map/icon_03.svg';
+	const mallIcon     = 'media/map/icon_04.svg';
+	const theatreIcon  = 'media/map/icon_05.svg';
 	const terenkurIcon = 'media/map/icon_06.svg';
-	const kokTobeIcon = 'media/map/icon_07.svg';
-	const dostykIcon = 'media/map/icon_08.svg';
-	const colibriIcon = 'media/map/icon_09.svg';
+	const kokTobeIcon  = 'media/map/icon_07.svg';
+	const dostykIcon   = 'media/map/icon_08.svg';
+	const colibriIcon  = 'media/map/icon_09.svg';
 
 	const officeIcon = 'media/map/icon_10.svg';
 
@@ -1292,6 +1600,7 @@ function initMap() {
 
 window.initMap = initMap;
 
+// Open map functional
 
 jQuery('.open-map').click(function(){
 
@@ -1307,27 +1616,73 @@ jQuery('.open-map').click(function(){
 	}, 600)
 })
 
+// Close map functional
+
 jQuery('.map-close').click(function(){
-	const map = jQuery('#map-full #map');
 
-	jQuery(".map-close").removeClass("active");
-	
-	setTimeout(function(){
-		jQuery('.section-interactive-map').removeClass('active')
-		jQuery('html').css('overflowY', 'auto')
-	}, 300)
+	if(jQuery(window).width() < 500){
 
-	setTimeout(function(){
-		map.detach();
-		jQuery(map).appendTo('.map-column-02');
-	}, 500)
+		const map = jQuery('#map-full #map-mobile');
+		jQuery(".map-close").removeClass("active");
+
+		setTimeout(function(){
+			jQuery('.section-interactive-map').removeClass('active')
+			jQuery('html').css('overflowY', 'auto')
+		}, 300)
+
+		setTimeout(function(){
+			map.detach();
+			jQuery(map).appendTo('.section-map-mobile .map-row-02');
+		}, 500)
+
+	} else {
+		const map = jQuery('#map-full #map');
+
+		jQuery(".map-close").removeClass("active");
+		
+		setTimeout(function(){
+			jQuery('.section-interactive-map').removeClass('active')
+			jQuery('html').css('overflowY', 'auto')
+		}, 300)
+
+		setTimeout(function(){
+			map.detach();
+			jQuery(map).appendTo('.map-column-02');
+		}, 500)
+	}
+
 })
 
+// Open mobile map functional
+
+jQuery('.open-mobile-map').click(function(){
+
+	const map = jQuery('#map-mobile');
+	map.detach();
+	jQuery(map).appendTo('#map-full')
+
+	jQuery('.section-interactive-map').addClass('active')
+	jQuery('html').css('overflow', 'hidden')
+
+	setTimeout(function(){
+		jQuery(".map-close").addClass("active");
+	}, 300)
+})
+
+
+if(jQuery(window).width() < 500){
+	const map = jQuery('#map');
+	map.detach();
+	jQuery(map).appendTo('#map-mobile')
+}
+
+if(jQuery(window).width() < 992){
+	const map = jQuery('#footer-map');
+	map.detach();
+	jQuery(map).appendTo('#footer-map-mobile')
+}
 
 /*--------------------------------------------------------------
 >>> MAP CODE END.
 --------------------------------------------------------------*/
-
-
-
 
