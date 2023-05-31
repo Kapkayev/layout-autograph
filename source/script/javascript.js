@@ -165,8 +165,8 @@ jQuery(document).ready(function(){
 	    smartSpeed: 1000,
 	    dotsContainer: '.gallery-progress',
 	    onInitialized: function(e) {
-		    jQuery('.gallery-counter').text( '01 / ')
-		    jQuery('.gallery-number').text( '0' + this.items().length)
+		    jQuery('.gallery-counter').text( '1 / ')
+		    jQuery('.gallery-number').text(this.items().length)
 		}
 	})
 
@@ -182,8 +182,8 @@ jQuery(document).ready(function(){
 	})
 
 	jQuery('.gallery-slider').on('changed.owl.carousel', function(e) {
-		jQuery('.gallery-counter').text( '0' + ++e.page.index + ' / ')
-	 	jQuery('.gallery-number').text( '0' + e.item.count)
+		jQuery('.gallery-counter').text(++e.page.index + ' / ')
+	 	jQuery('.gallery-number').text(e.item.count)
 	});
 
 	jQuery('.gallery-progress button').each(function() {
