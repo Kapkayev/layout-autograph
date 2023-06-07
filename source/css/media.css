@@ -328,7 +328,7 @@
   .section-map .map-container .map-block .map-column-02 {
     width: 100%;
     height: 600px;
-    margin: 0px 0px 250px 0px;
+    margin: 0px 0px 0px 0px;
   }
   .map-row-01 .map-column-03 p {
     width: 90%;
@@ -641,6 +641,12 @@
     align-items: center;
   }
   /* BUILD SECTION STYLE SETTINGS END (992px). */
+  .map-trigger {
+    display: none;
+  }
+  .information-trigger {
+    display: none;
+  }
 }
 @media only screen and (max-width: 700px) {
   /* BASE STYLE SETTINGS START (700px): */
@@ -748,7 +754,7 @@
     height: 700px;
     position: relative;
     left: -30px;
-    margin: 0px 0px 250px 0px;
+    margin: 0px 0px 0px 0px;
   }
   .map-block-title {
     margin: 24px 0px;

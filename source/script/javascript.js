@@ -113,6 +113,12 @@ jQuery(document).ready(function(){
 --------------------------------------------------------------*/
 
 	jQuery(window).scroll(function() {
+		if (jQuery(this).scrollTop() >= 200) {
+			jQuery(".header-menu-full").addClass('hidden');
+		} else {
+			jQuery(".header-menu-full").removeClass("hidden");
+		}
+
 		if (jQuery(this).scrollTop() >= 800) {
 			jQuery(".header-menu-full").addClass("sticky");
 		} else {
@@ -132,13 +138,17 @@ jQuery(document).ready(function(){
 
 	jQuery('#menu-open').click(function(){
         jQuery('.section-menu').css('transform','translateX(0)');
+        jQuery(".section-menu").addClass("visibility");
         setTimeout(function(){
 			jQuery('html').css('overflow', 'hidden')
         }, 300)
     })
 
     jQuery('#menu-close').click(function(){
-        jQuery('.section-menu').css('transform','translateX(-100%)');
+    	setTimeout(function(){
+    	 	jQuery('.section-menu').css('transform','translateX(-100%)');
+    	}, 400)
+        jQuery(".section-menu").removeClass("visibility");
         jQuery('html').css('overflowY', 'auto')
     })
 
@@ -228,25 +238,39 @@ jQuery(document).ready(function(){
 	let sectionHeightMap = jQuery('.section-map').height();
 	let sectiontInformation = jQuery('.section-information').height();
 
-	let heightToMap = sectionHeightHeader + sectionHeightProject + (sectionHeightMap / 4);
+	gsap.registerPlugin(ScrollTrigger);
 
-	jQuery(window).scroll(function() {
-		if (jQuery(this).scrollTop() >= heightToMap) {
-			jQuery(".section-map .map-row-03").addClass("map-block-parallax");
-		} else {
-			jQuery(".section-map .map-row-03").removeClass("map-block-parallax");
-		}
-	});
 
-	let heightToInformation = sectionHeightHeader + sectionHeightProject + sectionHeightMap + (sectiontInformation / 3);
+	if(jQuery(window).width() > 992){
+		ScrollTrigger.create({
+			trigger: ".project-trigger",
+			start: "top 100px",
+			end: "+=300",
+			markers: false,
+			pinSpacing: false,
+			pin: true,
+		})
 
-	jQuery(window).scroll(function() {
-		if (jQuery(this).scrollTop() >= heightToInformation) {
-			jQuery(".information-row-02").addClass("information-block-parallax");
-		} else {
-			jQuery(".information-row-02").removeClass("information-block-parallax");
-		}
-	});
+		ScrollTrigger.create({
+			trigger: ".map-container",
+			start: "100px",
+			end: `+=${sectionHeightMap + 200}`,
+			markers: false,
+			pin: true,
+			pinSpacing: false,
+		})
+
+		ScrollTrigger.create({
+			trigger: ".information-container",
+			start: "300px",
+			end: `+=${sectiontInformation + 200}`,
+			markers: false,
+			pin: true,
+			pinSpacing: false,
+		})
+	} else {
+		ScrollTrigger.killAll()
+	}
 
 /*--------------------------------------------------------------
 >>> PARALLAX CODE END.
@@ -289,20 +313,6 @@ jQuery('.call-close, .call-close-mobile').click(function(){
 		jQuery('html').css('overflowY', 'auto')
 	}, 1200)
 })
-
-// jQuery('.call-close-mobile').click(function(){
-// 	setTimeout(function(){
-// 		jQuery(".call-background-01").removeClass("active");
-// 		jQuery(".call-block").removeClass("active");
-// 	}, 400)
-// 	setTimeout(function(){
-// 		jQuery(".call-background-02").removeClass("active");
-// 	}, 800)
-// 	setTimeout(function(){
-// 		jQuery('.section-call').css('display','none');
-// 		jQuery('html').css('overflowY', 'auto')
-// 	}, 1200)
-// })
 
 
 /*--------------------------------------------------------------
@@ -400,19 +410,20 @@ jQuery("img.img-svg").each(function () {
 		const locationName = location.href
 		const locationNameSplit = locationName.split('#')[1]
 
-		jQuery(".service-button-item").each(function () {
+		jQuery(".service-button-container .service-button-item").each(function () {
 			const itemName = jQuery(this).attr('href')
 			const itemNameSplit = itemName.split('#')[1]
+
 		
 			if (itemNameSplit === locationNameSplit) {
-				jQuery(".service-button-item").removeClass('active');
+				jQuery(".service-button-container .service-button-item").removeClass('active');
 				jQuery(this).addClass('active');
 			}
 		})
 	}
 
-	jQuery(".service-button-item").click(function () {
-		jQuery(".service-button-item").removeClass('active');
+	jQuery(".service-button-container .service-button-item").click(function () {
+		jQuery(".service-button-container .service-button-item").removeClass('active');
 		jQuery(this).addClass('active');
 
 		const locationName = location.href
@@ -943,12 +954,12 @@ jQuery(document).ready(function(){
 	const locationName = location.href
 	const locationNameSplit = locationName.split('#')[1]
 
-	jQuery(".service-button-item").each(function () {
+	jQuery(".service-button-container .service-button-item").each(function () {
 		const itemName = jQuery(this).attr('href')
 		const itemNameSplit = itemName.split('#')[1]
 	
 		if (itemNameSplit === locationNameSplit) {
-			jQuery(".service-button-item").removeClass('active');
+			jQuery(".service-button-container .service-button-item").removeClass('active');
 			jQuery(this).addClass('active');
 		}
 	})

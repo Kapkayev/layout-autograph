@@ -15,6 +15,7 @@ body
 	scroll-behavior: smooth
 	overflow: hidden
 	font-family: var(--font-family-primary)
+	-webkit-font-smoothing: antialiased
 
 h1, h2, h3, h4, h5, h6
 	font-family: var(--font-family-titles)
@@ -69,25 +70,31 @@ h1, h2, h3, h4, h5, h6
 
 .header-container
 	height: 100vh
-	// height: 810px
 	display: flex
 	flex-direction: column
 	position: relative
 
-.header-menu-full.sticky
-	width: 100%
-	position: fixed
-	top: 0px
-	left: 50%
-	z-index: 100
-	transform: translate(-50%, 0%)
-	@include element_animation
-	background-color: var(--color-dark-100)
+.header-menu-full
+	transition-property: opacity
+	transition-duration: 0.3s
 
-	.header-menu-fix
-		max-width: 1920px
-		margin: 0px auto
-		border-bottom: 1px solid var(--color-gold-border)
+	&.hidden
+		opacity: 0
+
+	&.sticky
+		width: 100%
+		position: fixed
+		top: 0px
+		left: 50%
+		z-index: 100
+		transform: translate(-50%, 0%)
+		opacity: 1
+		background-color: var(--color-dark-100)
+
+		.header-menu-fix
+			max-width: 1920px
+			margin: 0px auto
+			border-bottom: 1px solid var(--color-gold-border)
 
 .header-menu-full.sticky
 	.header-menu__logotype
@@ -224,6 +231,8 @@ h1, h2, h3, h4, h5, h6
 		font-size: 26px
 		line-height: 30px
 		color: var(--color-gold-200)
+		text-transform: uppercase
+		margin: 10px 0px 0px 0px
 
 	.header-title__button-apartment
 		display: none
@@ -260,8 +269,13 @@ h1, h2, h3, h4, h5, h6
 	z-index: 200
 	transform: translate(-100%)
 	background-color: var(--color-dark-100)
-	transition-timing-function: ease-in-out
-	transition-duration: 0.9s
+
+	transition-property: opacity
+	transition-duration: 0.4s
+	opacity: 0
+
+	&.visibility
+		opacity: 1
 
 	.wrapper-fix
 		height: 100%
@@ -460,6 +474,13 @@ h1, h2, h3, h4, h5, h6
 							display: flex
 							justify-content: center
 							align-items: center
+							@include element_animation
+
+							&:hover
+								background-color: var(--color-gold-150)
+
+								svg path
+									stroke: var(--color-brown-300)
 
 						p
 							color: var(--color-gold-005)
@@ -497,6 +518,13 @@ h1, h2, h3, h4, h5, h6
 							display: flex
 							justify-content: center
 							align-items: center
+							@include element_animation
+
+							&:hover
+								background-color: var(--color-gold-150)
+
+								svg path
+									stroke: var(--color-brown-300)
 
 					p
 						color: var(--color-gold-005)
@@ -746,6 +774,8 @@ h1, h2, h3, h4, h5, h6
 			border-bottom: 1px solid var(--color-gold-border)
 
 		p
+			text-transform: uppercase
+
 			&:first-child
 				font-family: var(--font-family-titles)
 				color: var(--color-gold-150)
@@ -757,7 +787,6 @@ h1, h2, h3, h4, h5, h6
 				color: var(--color-gold-020)
 				font-size: 11px
 				line-height: 16px
-				text-transform: uppercase
 
 
 .gallery-slider
@@ -942,18 +971,10 @@ h1, h2, h3, h4, h5, h6
 			&:hover
 				background-color: var(--color-brown-300)
 
-.map-row-03
+.map-trigger
 	width: 100%
-	position: absolute
-	left: 0px
-	top: 100%
-	z-index: 1
-	margin: 0px auto
-	transition-duration: 1s
-	transition-timing-function: ease-in-out
-
-	&.map-block-parallax
-		transform: translateY(-100%)
+	height: 100%
+	background-color: var(--color-brown-005)
 
 	.map-wrapper
 		width: 100%
@@ -962,6 +983,8 @@ h1, h2, h3, h4, h5, h6
 		margin: 0px auto
 
 		& > div:first-child
+			position: relative
+			z-index: 1
 			width: 50%
 			background-color: var(--color-brown-200)
 			padding: 48px 32px
@@ -978,6 +1001,9 @@ h1, h2, h3, h4, h5, h6
 			text-transform: uppercase
 			padding: 0px 0px 24px 0px
 			border-bottom: 1px solid var(--color-gold-border)
+
+
+
 
 
 .map-slider-container
@@ -1502,6 +1528,8 @@ div.gm-bundled-control div.gmnoprint
 			width: 50%
 
 			p
+				text-transform: uppercase
+
 				&:first-child
 					font-family: var(--font-family-titles)
 					color: var(--color-gold-150)
@@ -1513,7 +1541,6 @@ div.gm-bundled-control div.gmnoprint
 					color: var(--color-gold-020)
 					font-size: 11px
 					line-height: 16px
-					text-transform: uppercase
 
 	.information-block-caption
 		display: flex
@@ -1604,7 +1631,7 @@ div.gm-bundled-control div.gmnoprint
 
 		&.point-01
 			left: 48%
-			top: 20%
+			top: 30%
 
 		&.point-02
 			left: 48%
@@ -1612,24 +1639,17 @@ div.gm-bundled-control div.gmnoprint
 
 		&.point-03
 			left: 25%
-			top: 40%
+			top: 55%
 
 		&.point-04
 			left: 10%
 			top: 80%
 
-.information-row-02
-	width: 100%
-	position: absolute
-	left: 0px
-	top: 100%
-	z-index: 1
-	margin: 0px auto
-	transition-duration: 1s
-	transition-timing-function: ease-in-out
 
-	&.information-block-parallax
-		transform: translateY(-100%)
+.information-trigger
+	width: 100%
+	height: 100%
+	background-color: var(--color-dark-100)
 
 	.information-wrapper
 		width: 100%
@@ -1638,6 +1658,8 @@ div.gm-bundled-control div.gmnoprint
 		margin: 0px auto
 
 		& > div:first-child
+			position: relative
+			z-index: 1
 			width: 40%
 			background-color: var(--color-gold-020)
 			padding: 48px 32px 80px 48px
@@ -1747,6 +1769,8 @@ div.gm-bundled-control div.gmnoprint
 			width: 50%
 
 			p
+				text-transform: uppercase
+
 				&:first-child
 					font-family: var(--font-family-titles)
 					color: var(--color-gold-150)
@@ -1758,7 +1782,6 @@ div.gm-bundled-control div.gmnoprint
 					color: var(--color-gold-020)
 					font-size: 11px
 					line-height: 16px
-					text-transform: uppercase
 
 .information-mobile-row-04
 	width: 100%
@@ -2017,6 +2040,8 @@ div.gm-bundled-control div.gmnoprint
 			color: var(--color-brown-020)
 			font-size: 14px
 			line-height: 22px
+			font-weight: 600
+
 		div
 			
 			display: flex
@@ -2739,6 +2764,14 @@ div.gm-bundled-control div.gmnoprint
 					align-items: center
 					background-color: var(--color-gold-border)
 					border-radius: 50px
+					@include element_animation
+
+					&:hover
+						background-color: var(--color-gold-150)
+
+						svg path
+							stroke: var(--color-brown-300)
+							
 
 				p
 					font-size: 14px
@@ -2769,6 +2802,13 @@ div.gm-bundled-control div.gmnoprint
 					align-items: center
 					background-color: var(--color-gold-border)
 					border-radius: 50px
+					@include element_animation
+
+					&:hover
+						background-color: var(--color-gold-150)
+
+						svg path
+							stroke: var(--color-brown-300)
 
 				p
 					font-size: 14px
@@ -2874,6 +2914,7 @@ div.gm-bundled-control div.gmnoprint
 		color: var(--color-dark-100)
 		font-size: 14px
 		line-height: 20px
+		font-weight: 600
 		text-decoration: none
 		letter-spacing: 0.01em
 		border-radius: 28px
@@ -2980,6 +3021,7 @@ div.gm-bundled-control div.gmnoprint
 				color: var(--color-gold-020)
 				font-size: 14px
 				line-height: 20px
+				font-weight: 600
 				text-decoration: none
 				letter-spacing: 0.01em
 				border-radius: 28px
